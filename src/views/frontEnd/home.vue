@@ -250,7 +250,7 @@ export default {
       setTimeout(() => {
         self.$bus.$emit('getProducts', selected)
         self.$bus.$emit('getPathName')
-      }, 1010)
+      }, 1100)
       setTimeout(() => {
         document.body.scrollTop = 500
         document.documentElement.scrollTop = 500
