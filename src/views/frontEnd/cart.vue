@@ -327,7 +327,9 @@ export default {
 
       self.cartIsActive = false
       self.$router.push('checkout')
-      self.$bus.$emit('getPathName')
+      setTimeout(() => {
+        self.$bus.$emit('getPathName')
+      }, 10)
     }
   },
   computed: {
