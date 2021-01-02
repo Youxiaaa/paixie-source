@@ -14,9 +14,9 @@
 
                     <div>
                         <ul class="mb-5">
-                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin',menuActive('signin'))">登入</a></li>
-                            <li><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about',menuActive('about'))">品牌故事</a></li>
-                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products',menuActive('products'))">商品</a></li>
+                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin')">登入</a></li>
+                            <li><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about')">品牌故事</a></li>
+                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products')">商品</a></li>
                         </ul>
                     </div>
 
@@ -41,13 +41,13 @@
                 <div class="navBar" :class="{'navBarChange' : isPageover10px}">
 
                     <h1 class="logo d-flex justify-content-center mt-1" v-if="isHomepage">
-                        <a href="#" title="拍謝" @click.prevent="toWhere('home'),menuActive('home')" :class="{'logoDark' : isPageover10px}">
+                        <a href="#" title="拍謝" @click.prevent="toWhere('home')" :class="{'logoDark' : isPageover10px}">
                             拍謝
                         </a>
                     </h1>
 
                     <h1 class="logo d-flex justify-content-center mt-1" v-if="!isHomepage">
-                        <a href="#" title="拍謝" @click.prevent="toWhere('home'),menuActive('home')" class="logoDark">
+                        <a href="#" title="拍謝" @click.prevent="toWhere('home')" class="logoDark">
                             拍謝
                         </a>
                     </h1>
@@ -55,7 +55,7 @@
                     <div class="topMenu ml-auto" v-if="isHomepage">
                         <ul class="d-flex">
                             <li>
-                                <a href="#" class="text-white" @click.prevent="toWhere('about'),menuActive('about')"
+                                <a href="#" class="text-white" @click.prevent="toWhere('about')"
                                 @mouseover="aboutisHovering = true"
                                 @mouseout="aboutisHovering = false"
                                 :class="{'text-secondary' : isPageover10px , 'topMenuActive' : aboutisActive}"
@@ -63,7 +63,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="text-white" @click.prevent="toWhere('products',menuActive('products'))"
+                                <a href="#" class="text-white" @click.prevent="toWhere('products')"
                                 @mouseover="productsisHovering = true"
                                 @mouseout="productsisHovering = false"
                                 :class="{'text-secondary' : isPageover10px , 'topMenuActive' : productsisActive}"
@@ -71,7 +71,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="text-white" @click.prevent="toWhere('signin',menuActive('signin'))"
+                                <a href="#" class="text-white" @click.prevent="toWhere('signin')"
                                 @mouseover="signinisHovering = true"
                                 @mouseout="signinisHovering = false"
                                 :class="{'text-secondary' : isPageover10px , 'topMenuActive' : signinisActive}"
@@ -83,7 +83,7 @@
                     <div class="topMenu ml-auto" v-if="!isHomepage">
                         <ul class="d-flex">
                             <li>
-                                <a href="#" @click.prevent="toWhere('about'),menuActive('about')"
+                                <a href="#" @click.prevent="toWhere('about')"
                                 @mouseover="aboutisHovering = true"
                                 @mouseout="aboutisHovering = false"
                                 :class="{'topMenuActive' : aboutisActive}"
@@ -91,7 +91,7 @@
                             </li>
 
                             <li>
-                                <a href="#" @click.prevent="toWhere('products',menuActive('products'))"
+                                <a href="#" @click.prevent="toWhere('products')"
                                 @mouseover="productsisHovering = true"
                                 @mouseout="productsisHovering = false"
                                 :class="{'topMenuActive' : productsisActive}"
@@ -99,7 +99,7 @@
                             </li>
 
                             <li>
-                                <a href="#" @click.prevent="toWhere('signin',menuActive('signin'))"
+                                <a href="#" @click.prevent="toWhere('signin')"
                                 @mouseover="signinisHovering = true"
                                 @mouseout="signinisHovering = false"
                                 :class="{'topMenuActive' : signinisActive}"
@@ -156,46 +156,10 @@ export default {
       setTimeout(() => {
         document.body.scrollTop = 0
         document.documentElement.scrollTop = 0
-
         self.$router.push(`/${pageName}`)
       }, 1200)
     },
-    menuActive (pathName) {
-      const self = this
 
-      switch (pathName) {
-        case 'about' :
-          self.isHomepage = false
-          self.aboutisActive = true
-          self.productsisActive = false
-          self.signinisActive = false
-          break
-        case 'products' :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = true
-          self.signinisActive = false
-          break
-        case 'signin' :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = true
-          break
-        case 'home' :
-          self.isHomepage = true
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = false
-          break
-        default :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = false
-          break
-      }
-    },
     navBarchange () {
       const self = this
       const pageScroll = window.scrollY

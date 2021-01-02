@@ -188,8 +188,8 @@ export default {
     self.$bus.$on('PayMethod', (pay, orderId, cartsLen) => {
       self.getPayMethod(pay)
     })
-
     self.getOrder()
+    self.$bus.$emit('getPathName')
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0

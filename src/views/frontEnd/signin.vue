@@ -491,7 +491,9 @@ export default {
     }
   },
   created () {
-    this.openPage()
+    const self = this
+    self.openPage()
+    self.$bus.$emit('getPathName')
   }
 }
 </script>

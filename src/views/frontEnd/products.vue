@@ -318,6 +318,7 @@ export default {
     self.$bus.$on('getProducts', (selected) => {
       self.selected = selected
     })
+    self.$bus.$emit('getPathName')
 
     history.pushState(null, null, document.URL)
     window.addEventListener('popstate', function () {

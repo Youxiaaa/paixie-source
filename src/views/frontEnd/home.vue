@@ -249,7 +249,6 @@ export default {
       }, 1000)
       setTimeout(() => {
         self.$bus.$emit('getProducts', selected)
-        self.$bus.$emit('getPathName')
       }, 1100)
       setTimeout(() => {
         document.body.scrollTop = 500
@@ -258,7 +257,9 @@ export default {
     }
   },
   created () {
-    this.openPage()
+    const self = this
+    self.openPage()
+    self.$bus.$emit('getPathName')
     window.addEventListener('scroll', this.addAnimate)
   }
 }

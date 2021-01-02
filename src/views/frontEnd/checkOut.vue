@@ -262,6 +262,7 @@ export default {
     self.$bus.$on('updateCheckout', () => {
       self.getCart()
     })
+    self.$bus.$emit('getPathName')
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0

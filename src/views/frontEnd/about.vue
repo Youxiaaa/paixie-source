@@ -242,7 +242,9 @@ export default {
     }
   },
   created () {
-    this.openPage()
+    const self = this
+    self.openPage()
+    self.$bus.$emit('getPathName')
     window.addEventListener('scroll', this.addAnimate)
   }
 }
