@@ -329,7 +329,7 @@ export default {
       self.$router.push('checkout')
       setTimeout(() => {
         self.$bus.$emit('getPathName')
-      }, 10)
+      }, 100)
     }
   },
   computed: {
