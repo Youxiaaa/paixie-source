@@ -467,7 +467,7 @@ export default {
     },
     signIn () {
       const self = this
-      const api = `${process.env.APIPATH}/admin/signin`
+      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`
 
       self.isLoading = true
       self.$http.post(api, self.user).then((res) => {

@@ -147,7 +147,7 @@ export default {
     },
     getOrder () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/order/${self.orderId}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order/${self.orderId}`
 
       self.$http.get(api).then((res) => {
         if (res.data.success) {
@@ -160,7 +160,7 @@ export default {
     },
     payOrder () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/pay/${self.orderId}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/pay/${self.orderId}`
 
       self.rightCurtainisOpen = true
 
@@ -169,6 +169,7 @@ export default {
           self.getOrder()
 
           setTimeout(() => {
+            self.$bus.$emit('getPathName')
             self.rightCurtainisOpen = false
           }, 1000)
         }

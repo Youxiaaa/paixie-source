@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     logOut () {
-      const api = `${process.env.APIPATH}/logout`
+      const api = `${process.env.VUE_APP_APIPATH}/logout`
       const self = this
 
       self.$http.post(api).then((res) => {
@@ -150,16 +150,10 @@ export default {
     },
     onloadTopmenu () {
       const self = this
-
       const htmlHref = window.location.href.replace(/^http:\/\/[^/]+/, '')
       const addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
-      const index = addr.lastIndexOf('\/')
+      const index = addr.lastIndexOf('/')
       const addrLast = decodeURI(addr.substring(index + 1, addr.length))
-
-      setTimeout(() => {
-
-      }, 500)
-
       switch (addrLast) {
         case 'orders' :
           self.couponsIsActive = false

@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="static/img/lens.jpg" alt="照相機 鏡頭" title="圖片源自 Unsplash">
+                        <img src="@/assets/img/lens.jpg" alt="照相機 鏡頭" title="圖片源自 Unsplash">
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="static/img/tripod.jpg" alt="照相機 腳架" title="圖片源自 Unsplash">
+                        <img src="@/assets/img/tripod.jpg" alt="照相機 腳架" title="圖片源自 Unsplash">
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
         <section>
 
             <div class="videoBanner">
-            <video-bg :sources="['static/video/homevideo1.mp4']" class="preFadein">
+            <video-bg :sources="['https://assets.mixkit.co/videos/preview/mixkit-man-walking-along-an-old-narrow-alley-tracking-27238-large.mp4']" class="preFadein">
 
             <div class="videoTitle">
 
@@ -144,7 +144,7 @@
                             <div class="phoneScreen">
                                 <div class="phonePage1 preFadeinRight">
                                     <div class="text-center">
-                                    <img src="static/img/email.svg" alt="email icon">
+                                    <img src="@/assets/img/email.svg" alt="email icon">
                                     <br>
                                     <h3 class="h4 text-secondary mt-3">請輸入您的電子信箱</h3>
 
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="phonePage2">
                                     <div class="text-center">
-                                    <img src="static/img/thank-you.svg" alt="thank you">
+                                    <img src="@/assets/img/thank-you.svg" alt="thank you">
                                     </div>
                                     <h3 class="h2 text-secondary">感謝您的訂閱</h3>
                                     <p class="h5 text-secondary my-4">您的專屬9折優惠碼↓↓↓</p>

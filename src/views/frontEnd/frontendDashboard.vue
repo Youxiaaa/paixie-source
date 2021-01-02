@@ -10,7 +10,6 @@
 
 <script>
 
-import $ from 'jquery'
 import navBar from './navBar'
 import footerBar from './footer'
 import cart from './cart'

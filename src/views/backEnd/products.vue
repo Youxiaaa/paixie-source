@@ -215,7 +215,7 @@ export default {
   },
   methods: {
     getProducts (page = 1) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/products?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/products?page=${page}`
       const self = this
 
       self.isLoading = true
@@ -251,14 +251,14 @@ export default {
     },
     updateProduct () {
       const self = this
-      let api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/product`
+      let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product`
       let httpMethod = 'post'
 
       self.isLoading = true
       self.updateProductLoadingIcon = true
 
       if (self.isNew === false) {
-        api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/product/${this.tempProduct.id}`
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product/${this.tempProduct.id}`
         httpMethod = 'put'
       }
 
@@ -278,7 +278,7 @@ export default {
     },
     delProduct (id) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/product/${id}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product/${id}`
 
       self.isLoading = true
 
@@ -297,7 +297,7 @@ export default {
     },
     uploadFile () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/upload`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/upload`
       const uploadedFile = self.$refs.files.files[0]
       const formData = new FormData()
 

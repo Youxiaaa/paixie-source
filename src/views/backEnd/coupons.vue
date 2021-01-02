@@ -148,7 +148,7 @@ export default {
   methods: {
     getCoupons (page = 1) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/coupons?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupons?page=${page}`
 
       self.isLoading = true
       self.$http.get(api).then((res) => {
@@ -182,7 +182,7 @@ export default {
     },
     updateCoupon () {
       const self = this
-      let api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/coupon`
+      let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon`
       let httpMethod = 'post'
       const timestamp = Math.floor(new Date(self.tempCoupon.due_date) / 1000)
 
@@ -190,7 +190,7 @@ export default {
       self.isLoading = true
 
       if (!self.isNew) {
-        api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
         httpMethod = 'put'
       }
 
@@ -207,7 +207,7 @@ export default {
     },
     delCoupon () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
 
       self.isLoading = true
       self.$http.delete(api).then((res) => {

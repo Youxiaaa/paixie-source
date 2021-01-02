@@ -158,10 +158,10 @@
                     </div>
                     <div class="col-lg-7 mt-3 px-5 product-content">
                         <h2 class="h3 text-primary mb-2"> {{ tempProduct.title }} </h2>
-                        <p class="h6 text-secondary mt-3 px-2"> {{ tempProduct.description }} </p>
-                        <p class="text-primary h3 mt-5">產品介紹</p>
+                        <p class="h6 text-secondary my-3 px-2"> {{ tempProduct.description }} </p>
+                        <p class="text-white d-inline px-3 h3 bg-primary">產 品 介 紹</p>
                         <p class="h6 text-secondary mt-1 lh-global mb-5"> {{ tempProduct.content }} </p>
-                        <h3 class="text-primary h3"> / 購 買 前 須 知  / </h3>
+                        <h3 class="text-white d-inline px-3 h3 bg-primary">購 買 前 須 知</h3>
                         <ul class="mt-4 text-secondary">
                             <li class="mb-4">本賣場販售「現貨」&「追加」商品，追加款需追加7-21個工作天，工作天不包含假日，不能等待請勿下單。</li>
                             <li class="mb-4">下單就會進行追加，下單後不接受隨意取消訂單!!!（超過追加期除外）</li>
@@ -171,19 +171,19 @@
                             <li class="mb-4">隨意棄單或無故未取包裹一律加入黑名單，若有任何問題都可以私訊客服。</li>
                             <li class="mb-4">特價商品皆屬特賣，售出不做退換貨請見諒。</li>
                         </ul>
-                        <h3 class="text-primary h3 mt-5"> / 購 物 流 程  / </h3>
-                        <h4 class="text-secondary h6">選購商品加入購物車→結帳付款(期限內繳款完畢)→等待追加7-21工作天→出貨通知(2-3日取貨)</h4>
+                        <h3 class="text-white d-inline px-3 h3 bg-primary">購 物 流 程</h3>
+                        <h4 class="text-secondary h6 mt-4">選購商品加入購物車→結帳付款(期限內繳款完畢)→等待追加7-21工作天→出貨通知(2-3日取貨)</h4>
                         <ul class="mt-4 text-secondary">
                             <li class="mb-4">匯款完畢請務必至訂單內容留言匯款資訊(日期/金額/後五碼)</li>
                             <li class="mb-4">下單記得登入會員，才會收到出貨的mail通知唷~</li>
                         </ul>
-                        <h3 class="text-primary h3 mt-5">/ 付 款 方 式 /</h3>
+                        <h3 class="text-white d-inline px-3 h3 bg-primary">付 款 方 式</h3>
                         <ul class="mt-4 text-secondary">
                             <li class="mb-4">線上刷卡</li>
                             <li class="mb-4">貨到付款</li>
                             <li class="mb-4">ATM轉帳</li>
                         </ul>
-                        <h3 class="text-primary h3 mt-5">/ 注 意 事 項 /</h3>
+                        <h3 class="text-white d-inline px-3 h3 bg-primary">注 意 事 項</h3>
                         <ul class="mt-4 text-secondary">
                             <li class="mb-4">請勿濫用七天鑑賞期，下單前請務必三思並詳閱退換貨政策，勿衝動購買。</li>
                             <li class="mb-4">若尺寸不合提供一次更換尺寸的服務（自行負擔來回運費）</li>
@@ -226,7 +226,7 @@ export default {
   methods: {
     getCart () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/cart`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart`
 
       self.$http.get(api).then((res) => {
         self.isLoading = false
@@ -239,7 +239,7 @@ export default {
     },
     delCart (item) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/cart/${item.id}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart/${item.id}`
 
       self.isLoading = true
       self.$http.delete(api).then((res) => {
@@ -250,7 +250,7 @@ export default {
     },
     getProducts () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/products/all`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products/all`
 
       self.$http.get(api).then((res) => {
         if (res.data.success) {
@@ -264,7 +264,7 @@ export default {
     },
     addToCart (item, qty = 1) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/cart`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart`
 
       self.tempProduct = item
 
@@ -306,7 +306,7 @@ export default {
     },
     addCoupon () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/coupon`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/coupon`
 
       self.couponLoading = true
       self.$http.post(api, { data: self.coupon }).then((res) => {

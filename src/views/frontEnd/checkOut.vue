@@ -196,9 +196,6 @@
 </template>
 
 <script>
-
-import $ from 'jquery'
-
 export default {
   data () {
     return {
@@ -224,7 +221,7 @@ export default {
   methods: {
     getCart () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/cart`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart`
 
       self.$http.get(api).then((res) => {
         if (res.data.success) {
@@ -235,17 +232,18 @@ export default {
     },
     checkOut () {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/order`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order`
 
       self.isCheckout = true
       self.$http.post(api, { data: self.checkoutData }).then((res) => {
         if (res.data.success) {
+          self.$bus.$emit('updateCart')
+          setTimeout(() => {
+            self.$router.push(`checkOrder/${res.data.orderId}`)
+          }, 500)
           setTimeout(() => {
             self.$bus.$emit('PayMethod', self.payMethods)
-          }, 100)
-
-          self.$bus.$emit('updateCart')
-          self.$router.push(`checkOrder/${res.data.orderId}`)
+          }, 520)
         } else {
           alert('訂單發生錯誤')
         }

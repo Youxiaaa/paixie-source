@@ -20,7 +20,7 @@
                     <div class="aboutTitle preFadein d-flex justify-content-center align-items-center">
                         <div>
                         <h2 class="h1 text-primary text-center">Who we are</h2>
-                        <img src="static/img/aboutus.svg" alt="">
+                        <img src="@/assets/img/aboutus.svg" alt="">
                         </div>
                     </div>
                </div>
@@ -44,7 +44,7 @@
                     </p>
                </div>
                <div class="col-lg-6 text-center  d-flex justify-content-center align-items-center">
-                       <img src="static/img/about1.svg" alt="">
+                       <img src="@/assets/img/about1.svg" alt="">
                </div>
 
            </div>
@@ -61,7 +61,7 @@
                </div>
                <div class="col-lg-6">
                    <div class="text-center  d-flex justify-content-center align-items-center">
-                       <img src="static/img/about2.svg" alt="">
+                       <img src="@/assets/img/about2.svg" alt="">
                    </div>
                </div>
 
@@ -79,7 +79,7 @@
                </div>
                <div class="col-lg-6">
                    <div class="text-center d-flex justify-content-center align-items-center">
-                       <img src="static/img/about3.svg" alt="">
+                       <img src="@/assets/img/about3.svg" alt="">
                    </div>
                </div>
 
@@ -97,7 +97,7 @@
                </div>
                <div class="col-lg-6">
                    <div class="text-center d-flex justify-content-center align-items-center">
-                       <img src="static/img/about4.svg" alt="">
+                       <img src="@/assets/img/about4.svg" alt="">
                    </div>
                </div>
 

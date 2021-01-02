@@ -61,9 +61,6 @@
 </template>
 
 <script>
-
-import $ from 'jquery'
-
 export default {
   data () {
     return {
@@ -75,7 +72,7 @@ export default {
   methods: {
     getOrders (page = 1) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/admin/orders?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/orders?page=${page}`
 
       self.isLoading = true
 

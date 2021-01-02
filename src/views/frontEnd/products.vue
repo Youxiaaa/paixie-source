@@ -214,8 +214,8 @@ export default {
   methods: {
     getProducts (page = 1) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/products/all`
-      const api2 = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/products?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products/all`
+      const api2 = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products?page=${page}`
 
       self.$http.get(api).then((res) => {
         if (res.data.success) {
@@ -238,7 +238,7 @@ export default {
     },
     toPage (page) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/products?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products?page=${page}`
 
       self.isLoading = true
       self.pageHide = false
@@ -273,7 +273,7 @@ export default {
     },
     addToCart (item, qty = 1) {
       const self = this
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMERPATH}/cart`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart`
 
       self.tempProduct = item
 

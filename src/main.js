@@ -9,6 +9,7 @@ import VideoBg from 'vue-videobg'
 import VueTyperPlugin from 'vue-typer'
 import 'bootstrap'
 import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 import VueNoty from 'vuejs-noty'
 import { ValidationObserver, ValidationProvider, extend, localize, configure } from 'vee-validate'
 import TW from 'vee-validate/dist/locale/zh_TW.json'
@@ -25,7 +26,7 @@ extend('min', {
     return value.length >= args.length
   },
   params: ['length'],
-  message: '字串長度不夠'
+  message: '輸入長度不夠'
 })
 
 localize('zh_TW', TW)
@@ -59,7 +60,7 @@ new Vue({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
-    const api = `${process.env.APIPATH}/api/user/check`
+    const api = `${process.env.VUE_APP_APIPATH}/api/user/check`
 
     axios.post(api).then((res) => {
       if (res.data.success) {

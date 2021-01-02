@@ -142,10 +142,10 @@ export default {
 
       const htmlHref = window.location.href.replace(/^http:\/\/[^/]+/, '')
       const addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
-      const index = addr.lastIndexOf('\/')
+      const index = addr.lastIndexOf('/')
       const addrLast = decodeURI(addr.substring(index + 1, addr.length))
 
-      if (addrLast == pageName) { return };
+      if (addrLast === pageName) { return }
 
       self.hamburgerChange = false
 
@@ -213,7 +213,7 @@ export default {
 
       const htmlHref = window.location.href.replace(/^http:\/\/[^/]+/, '')
       const addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
-      const index = addr.lastIndexOf('\/')
+      const index = addr.lastIndexOf('/')
       const addrLast = decodeURI(addr.substring(index + 1, addr.length))
 
       switch (addrLast) {
