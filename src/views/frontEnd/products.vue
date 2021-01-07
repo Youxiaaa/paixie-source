@@ -82,7 +82,7 @@
 
                         <div class="col" @click.prevent="openProductModal(item)">
                           <div class="d-flex justify-content-center">
-                          <img :src="item.imageUrl" alt="" height="170px">
+                          <img :src="item.imageUrl" alt="" height="200px">
                           </div>
                         </div>
                         <div class="col px-2">
