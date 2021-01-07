@@ -142,54 +142,54 @@ export default {
   },
   methods: {
     getPayMethod (pay) {
-      const self = this
-      self.payMethod = pay
+      const vm = this
+      vm.payMethod = pay
     },
     getOrder () {
-      const self = this
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order/${self.orderId}`
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order/${vm.orderId}`
 
-      self.$http.get(api).then((res) => {
+      vm.$http.get(api).then((res) => {
         if (res.data.success) {
-          self.curtainOpen = true
-          self.order = res.data.order
-          self.total = res.data.order.total
-          self.orderId = res.data.order.id
+          vm.curtainOpen = true
+          vm.order = res.data.order
+          vm.total = res.data.order.total
+          vm.orderId = res.data.order.id
         }
       })
     },
     payOrder () {
-      const self = this
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/pay/${self.orderId}`
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/pay/${vm.orderId}`
 
-      self.rightCurtainisOpen = true
+      vm.rightCurtainisOpen = true
 
-      self.$http.post(api).then((res) => {
+      vm.$http.post(api).then((res) => {
         if (res.data.success) {
-          self.getOrder()
+          vm.getOrder()
 
           setTimeout(() => {
-            self.$bus.$emit('getPathName')
-            self.rightCurtainisOpen = false
+            vm.$bus.$emit('getPathName')
+            vm.rightCurtainisOpen = false
           }, 1000)
         }
       })
     },
     toWhere (products) {
-      const self = this
+      const vm = this
 
-      self.$bus.$emit('toWhere', (products))
+      vm.$bus.$emit('toWhere', (products))
     }
   },
   created () {
-    const self = this
+    const vm = this
 
-    self.orderId = self.$route.params.orderId
-    self.$bus.$on('PayMethod', (pay, orderId, cartsLen) => {
-      self.getPayMethod(pay)
+    vm.orderId = vm.$route.params.orderId
+    vm.$bus.$on('PayMethod', (pay, orderId, cartsLen) => {
+      vm.getPayMethod(pay)
     })
-    self.getOrder()
-    self.$bus.$emit('getPathName')
+    vm.getOrder()
+    vm.$bus.$emit('getPathName')
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0

@@ -23,12 +23,12 @@ export default {
       $('html,body').animate({ scrollTop: 0 }, '500')
     },
     getScrollPos () {
-      const self = this
+      const vm = this
       const scrollPos = $(window).scrollTop()
       if (scrollPos > 300) {
-        self.showScrollTop = true
+        vm.showScrollTop = true
       } else {
-        self.showScrollTop = false
+        vm.showScrollTop = false
       }
     }
   },

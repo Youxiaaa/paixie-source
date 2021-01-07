@@ -44,14 +44,14 @@
             <div class="container my-4 pt-5">
                 <div class="row">
 
-                    <div class="col-md-7 px-5 bg-light">
+                    <div class="col-lg-7 px-5 bg-light">
 
                         <validation-observer v-slot="{ invalid }">
                             <form @submit.prevent="checkOut(payMethods)" class="mt-5">
 
                             <validation-provider rules="required" v-slot="{ errors , classes }">
                             <div class="form-group">
-                            <label class="mb-2" for="name">姓名</label>
+                            <label class="mb-2" for="name">姓名 <span class="text-danger">*</span></label>
                             <input id="name" type="text" name="姓名" v-model="checkoutData.user.name"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }} </span>
@@ -60,7 +60,7 @@
 
                             <validation-provider rules="required|email" v-slot="{ errors , classes }">
                             <div class="form-group mt-3">
-                            <label class="mb-2" for="email">電子信箱</label>
+                            <label class="mb-2" for="email">電子信箱 <span class="text-danger">*</span></label>
                             <input id="email" type="email" name="電子信箱" v-model="checkoutData.user.email"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }} </span>
@@ -69,7 +69,7 @@
 
                             <validation-provider rules="required|min:8" v-slot="{ errors , classes }">
                             <div class="form-group mt-3">
-                            <label class="mb-2" for="tel">連絡電話</label>
+                            <label class="mb-2" for="tel">連絡電話 <span class="text-danger">*</span></label>
                             <input id="tel" maxlength="10" type="tel" name="連絡電話" v-model="checkoutData.user.tel"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }} </span>
@@ -77,7 +77,7 @@
                             </validation-provider>
 
                             <div class="form-group mt-3">
-                            <label class="mb-2" for="">付款方式</label>
+                            <label class="mb-2" for="">付款方式 <span class="text-danger">*</span></label>
                             <select class="form-control" name="payMethods" id="" v-model="payMethods">
                                 <option value="" selected disabled>請選擇付款方式</option>
                                 <option value="creditCard">線上刷卡</option>
@@ -90,7 +90,7 @@
 
                                 <div class="form-row">
                                 <div class="form-group mt-3 col-md-12">
-                                <label class="mb-2" for="creditcard">信用卡卡號</label>
+                                <label class="mb-2" for="creditcard">信用卡卡號 <span class="text-danger">*</span></label>
                                 <input id="creditcard" type="tel" class="form-control" maxlength="16" v-model="creditCardCode" name="信用卡卡號" :class="classes">
                                 <span class="invalid-feedback"> {{ errors[0] }} </span>
                                 </div>
@@ -102,7 +102,7 @@
 
                                 <div class="form-row d-flex flex-row-reverse">
                                 <div class="form-group mt-3 col-md-4">
-                                <label class="mb-2" for="securityCode">安全碼</label>
+                                <label class="mb-2" for="securityCode">安全碼 <span class="text-danger">*</span></label>
                                 <input id="securityCode" type="tel" maxlength="3" class="form-control" v-model="securityCode" name="安全碼" :class="classes">
                                 <span class="invalid-feedback"> {{ errors[0] }} </span>
                                 </div>
@@ -127,7 +127,7 @@
 
                             <validation-provider rules="required" v-slot="{ errors , classes }">
                             <div class="form-group mt-3">
-                            <label class="mb-2" for="address">收件人地址</label>
+                            <label class="mb-2" for="address">收件人地址 <span class="text-danger">*</span></label>
                             <input id="address" type="address" name="收件人地址" v-model="checkoutData.user.address"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }} </span>
@@ -151,23 +151,40 @@
 
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-lg-5">
 
                         <div class="card" style="width: 100%;">
 
                         <div class="card-header p-3">
-                            <h5 class="card-title text-secondary h5 d-flex align-self-center mb-0">訂 單 說 明</h5>
+                            <h5 class="card-title text-secondary h5 d-flex align-vm-center mb-0">訂 單 說 明</h5>
                         </div>
                         <div class="card-body">
 
                             <div class="d-flex justify-content-between px-3 my-4">
-                                <h3 class="card-subtitle text-muted">訂單數量</h3>
+                                <h3 class="card-subtitle text-muted h5">訂單數量</h3>
                                 <p class="card-subtitle text-muted"> {{ cartsLen }} / 件</p>
                             </div>
 
                             <div class="d-flex justify-content-between px-3">
-                                <h3 class="card-subtitle text-muted">總金額</h3>
-                                <p class="card-subtitle text-muted"> <span class="text-primary h5 font-weight-bold"> {{ carts.final_total | dollarSign}} </span>元整</p>
+                                <h3 class="card-subtitle text-muted h5">金額</h3>
+                                <p class="card-subtitle text-muted">
+                                  <i class="fas fa-spinner fa-spin" v-if="countIsloading"></i>
+                                  <span class="text-primary h5 font-weight-bold" v-if="carts.total === carts.final_total && !countIsloading"> {{ carts.total | dollarSign}} </span>
+                                  <span class="text-secondary h5 font-weight-bold" v-if="carts.total !== carts.final_total"> {{ carts.total | dollarSign}} </span>
+                                  元整</p>
+                            </div>
+
+                            <div class="d-flex justify-content-between px-3 my-4" v-if="carts.total !== carts.final_total">
+                                <h3 class="card-subtitle text-muted h5">折扣後金額</h3>
+                                <p class="card-subtitle text-muted"> <span class="text-primary h4 font-weight-bold"> {{ carts.final_total | dollarSign}} </span>元整</p>
+                            </div>
+
+                            <div class="btn-group mt-3 d-flex">
+                              <input type="text" placeholder="請輸入優惠券" v-model="coupon.code" class="couponInput" @keyup.enter="addCoupon">
+                              <div class="btn btn-primary text-white" :class="{'pageDisabled': !coupon.code}" @click.prevent="addCoupon">
+                                <i class="fas fa-paper-plane" v-if="!couponIssend"></i>
+                                <i class="fas fa-spinner fa-spin" v-if="couponIssend"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -215,34 +232,42 @@ export default {
       securityCode: '',
       expiryMonth: 1,
       expiryYear: 2021,
-      isCheckout: false
+      isCheckout: false,
+      coupon: {
+        code: ''
+      },
+      couponIssend: false,
+      final_total: 0,
+      countIsloading: false
     }
   },
   methods: {
     getCart () {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/cart`
 
-      self.$http.get(api).then((res) => {
+      vm.countIsloading = true
+      vm.$http.get(api).then((res) => {
         if (res.data.success) {
-          self.carts = res.data.data
-          self.cartsLen = res.data.data.carts.length
+          vm.carts = res.data.data
+          vm.cartsLen = res.data.data.carts.length
+          vm.countIsloading = false
         }
       })
     },
     checkOut () {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order`
 
-      self.isCheckout = true
-      self.$http.post(api, { data: self.checkoutData }).then((res) => {
+      vm.isCheckout = true
+      vm.$http.post(api, { data: vm.checkoutData }).then((res) => {
         if (res.data.success) {
-          self.$bus.$emit('updateCart')
+          vm.$bus.$emit('updateCart')
           setTimeout(() => {
-            self.$router.push(`checkOrder/${res.data.orderId}`)
+            vm.$router.push(`checkOrder/${res.data.orderId}`)
           }, 500)
           setTimeout(() => {
-            self.$bus.$emit('PayMethod', self.payMethods)
+            vm.$bus.$emit('PayMethod', vm.payMethods)
           }, 520)
         } else {
           alert('訂單發生錯誤')
@@ -250,19 +275,37 @@ export default {
       })
     },
     toProductsPage (productsPage) {
-      const self = this
+      const vm = this
 
-      self.$bus.$emit('toWhere', (productsPage))
+      vm.$bus.$emit('toWhere', (productsPage))
+    },
+    addCoupon () {
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/coupon`
+
+      vm.couponIssend = true
+      vm.$http.post(api, { data: vm.coupon }).then((res) => {
+        if (res.data.success) {
+          vm.couponIssend = false
+          vm.final_total = res.data.final_total
+          vm.$noty.success(res.data.message)
+          vm.coupon.code = ''
+          vm.getCart()
+        } else {
+          vm.couponIssend = false
+          vm.$noty.error(res.data.message)
+        }
+      })
     }
   },
   created () {
-    const self = this
+    const vm = this
 
-    self.getCart()
-    self.$bus.$on('updateCheckout', () => {
-      self.getCart()
+    vm.getCart()
+    vm.$bus.$on('updateCheckout', () => {
+      vm.getCart()
     })
-    self.$bus.$emit('getPathName')
+    vm.$bus.$emit('getPathName')
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0

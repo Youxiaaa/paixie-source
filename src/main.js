@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import dollarSign from './components/dollarSignFilter'
-import filterDate from './components/filterDate'
+import dollarSign from './filters/dollarSignFilter'
+import filterDate from './filters/filterDate'
 import VideoBg from 'vue-videobg'
 import VueTyperPlugin from 'vue-typer'
 import 'bootstrap'
@@ -66,8 +66,6 @@ router.beforeEach((to, from, next) => {
       if (res.data.success) {
         next()
       } else {
-        console.log('這裡需要驗證')
-
         next({
           path: '/signin'
         })

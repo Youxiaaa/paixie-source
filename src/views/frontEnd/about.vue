@@ -19,7 +19,7 @@
                <div class="col marginpaddingFix">
                     <div class="aboutTitle preFadein d-flex justify-content-center align-items-center">
                         <div>
-                        <h2 class="h1 text-primary text-center">Who we are</h2>
+                        <h2 class="h1 text-primary text-center">我 們 是 誰？</h2>
                         <img src="@/assets/img/aboutus.svg" alt="">
                         </div>
                     </div>
@@ -31,7 +31,7 @@
 
        <section>
 
-           <div class="aboutContent aboutContainer">
+           <div class="aboutContent container">
 
            <div class="row timeLine aboutContentItem flex-row-reverse preFadein">
 
@@ -108,14 +108,14 @@
        </section>
 
         <section>
-            <div class="container-fluid mb-5 px-5 preFadein">
+            <div class="px-5 mb-5 px-5 preFadein">
                 <div class="d-flex justify-content-center mb-5">
-                    <h2 class="h2 text-primary">聯 絡 我 們</h2>
+                    <h2 class="h1 text-primary">聯 絡 我 們</h2>
                 </div>
                 <div class="row">
 
-                    <div class="col md-6 my-5">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.148564952403!2d121.53281808512104!3d25.062953260335743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a959a9ce781b%3A0xb0c2ef0be716c094!2z6KGM5aSp5a6u!5e0!3m2!1szh-TW!2stw!4v1609195474781!5m2!1szh-TW!2stw" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <div class="col-md-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.148564952403!2d121.53281808512104!3d25.062953260335743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a959a9ce781b%3A0xb0c2ef0be716c094!2z6KGM5aSp5a6u!5e0!3m2!1szh-TW!2stw!4v1609195474781!5m2!1szh-TW!2stw" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
 
                     <div class="col-md-6 bg-light p-3">
@@ -125,7 +125,7 @@
 
                             <validation-provider rules="required" v-slot="{ errors , classes }">
                             <div class="form-group">
-                            <label class="mb-2 text-secondary" for="name">姓名</label>
+                            <label class="mb-2 text-secondary" for="name">姓名 <span class="text-danger">*</span></label>
                             <input id="name" type="text" name="姓名" v-model="user.name"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
@@ -134,7 +134,7 @@
 
                             <validation-provider rules="required|email" v-slot="{ errors , classes }">
                             <div class="form-group mt-3">
-                            <label class="mb-2 text-secondary" for="email">電子信箱</label>
+                            <label class="mb-2 text-secondary" for="email">電子信箱 <span class="text-danger">*</span></label>
                             <input id="email" type="email" name="電子信箱" v-model="user.mail"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
@@ -143,7 +143,7 @@
 
                             <validation-provider rules="required|min:8" v-slot="{ errors , classes }">
                             <div class="form-group mt-3">
-                            <label class="mb-2 text-secondary" for="tel">連絡電話</label>
+                            <label class="mb-2 text-secondary" for="tel">連絡電話 <span class="text-danger">*</span></label>
                             <input id="tel" maxlength="10" type="tel" name="連絡電話" v-model="user.tel"
                                 class="form-control" :class="classes">
                             <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
@@ -152,7 +152,7 @@
 
                             <validation-provider rules="required" v-slot="{ errors , classes }">
                             <div class="form-group">
-                            <label class="mb-2 text-secondary" for="textArea">留言</label>
+                            <label class="mb-2 text-secondary" for="textArea">留言 <span class="text-danger">*</span></label>
                             <br>
                             <div>
                                 <textarea name="留言" id="textArea" cols="30" rows="10"  style="width : 100%" v-model="user.message" :class="classes"></textarea>
@@ -234,17 +234,17 @@ export default {
       })
     },
     sendMessage () {
-      const self = this
+      const vm = this
 
-      self.messageAreaDisabled = true
+      vm.messageAreaDisabled = true
 
       alert('已收到您的訊息囉，我們會於上班時間儘速回覆您，謝謝。')
     }
   },
   created () {
-    const self = this
-    self.openPage()
-    self.$bus.$emit('getPathName')
+    const vm = this
+    vm.openPage()
+    vm.$bus.$emit('getPathName')
     window.addEventListener('scroll', this.addAnimate)
   }
 }

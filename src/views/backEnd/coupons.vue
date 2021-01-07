@@ -54,17 +54,7 @@
         <!--  -->
 
         <!-- 分頁 -->
-        <section>
-
-            <div class="d-flex justify-content-center mb-5">
-                <ul class="pagination">
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_pre}" @click.prevent="getCoupons(pagination.current_page - 1)">⬅</a></span></li>
-                    <li v-for="item in pagination.total_pages" :key="item.id" :class="{'pageActive' : pagination.current_page === item}"><a href="#" :class="{'text-white' : pagination.current_page === item}" @click.prevent="getCoupons(item)"> {{ item }} </a></li>
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_next}" @click.prevent="getCoupons(pagination.current_page + 1)">➡</a></span></li>
-                </ul>
-            </div>
-
-        </section>
+        <pagination></pagination>
         <!--  -->
 
         <!-- 折價券modal -->
@@ -134,8 +124,12 @@
 <script>
 
 import $ from 'jquery'
+import pagination from '@/components/Pagination.vue'
 
 export default {
+  components: {
+    pagination
+  },
   data () {
     return {
       isLoading: false,
@@ -147,58 +141,59 @@ export default {
   },
   methods: {
     getCoupons (page = 1) {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupons?page=${page}`
 
-      self.isLoading = true
-      self.$http.get(api).then((res) => {
-        self.isLoading = false
+      vm.isLoading = true
+      vm.$http.get(api).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
-          self.coupons = res.data.coupons
-          self.pagination = res.data.pagination
+          vm.coupons = res.data.coupons
+          vm.pagination = res.data.pagination
+          vm.$bus.$emit('updatePagination', res.data.pagination)
         }
       })
     },
     openCouponModal (isNew, item) {
-      const self = this
+      const vm = this
 
       if (isNew) {
-        self.isNew = true
-        self.tempCoupon = {}
+        vm.isNew = true
+        vm.tempCoupon = {}
       } else {
-        self.isNew = false
-        self.tempCoupon = Object.assign({}, item)
+        vm.isNew = false
+        vm.tempCoupon = { ...item }
       }
 
       $('#couponModal').modal('show')
     },
     openDelCouponModal (item) {
-      const self = this
+      const vm = this
 
-      self.tempCoupon = item
+      vm.tempCoupon = item
 
       $('#delCouponModal').modal('show')
     },
     updateCoupon () {
-      const self = this
+      const vm = this
       let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon`
       let httpMethod = 'post'
-      const timestamp = Math.floor(new Date(self.tempCoupon.due_date) / 1000)
+      const timestamp = Math.floor(new Date(vm.tempCoupon.due_date) / 1000)
 
-      self.tempCoupon.due_date = timestamp
-      self.isLoading = true
+      vm.tempCoupon.due_date = timestamp
+      vm.isLoading = true
 
-      if (!self.isNew) {
-        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
+      if (!vm.isNew) {
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${vm.tempCoupon.id}`
         httpMethod = 'put'
       }
 
-      self.$http[httpMethod](api, { data: self.tempCoupon }).then((res) => {
-        self.isLoading = false
+      vm.$http[httpMethod](api, { data: vm.tempCoupon }).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
-          self.getCoupons()
+          vm.getCoupons()
           $('#couponModal').modal('hide')
         } else {
           alert('新增優惠券失敗')
@@ -206,16 +201,16 @@ export default {
       })
     },
     delCoupon () {
-      const self = this
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${self.tempCoupon.id}`
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/coupon/${vm.tempCoupon.id}`
 
-      self.isLoading = true
-      self.$http.delete(api).then((res) => {
-        self.isLoading = false
+      vm.isLoading = true
+      vm.$http.delete(api).then((res) => {
+        vm.isLoading = false
         $('#delCouponModal').modal('hide')
 
         if (res.data.success) {
-          self.getCoupons()
+          vm.getCoupons()
         } else {
           alert('折價券刪除失敗')
         }
@@ -223,7 +218,11 @@ export default {
     }
   },
   created () {
-    this.getCoupons()
+    const vm = this
+    vm.getCoupons()
+    vm.$bus.$on('toPage', (page) => {
+      vm.getCoupons(page)
+    })
   }
 }
 </script>

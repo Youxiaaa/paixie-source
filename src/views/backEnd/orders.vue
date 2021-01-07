@@ -44,24 +44,19 @@
         <!--  -->
 
         <!-- 分頁 -->
-        <section>
-
-            <div class="d-flex justify-content-center mb-5">
-                <ul class="pagination">
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_pre}" @click.prevent="getOrders(pagination.current_page - 1)">⬅</a></span></li>
-                    <li v-for="item in pagination.total_pages" :key="item.id" :class="{'pageActive' : pagination.current_page === item}"><a href="#" :class="{'text-white' : pagination.current_page === item}" @click.prevent="getOrders(item)"> {{ item }} </a></li>
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_next}" @click.prevent="getOrders(pagination.current_page + 1)">➡</a></span></li>
-                </ul>
-            </div>
-
-        </section>
-
+        <pagination></pagination>
         <!--  -->
     </div>
 </template>
 
 <script>
+
+import pagination from '@/components/Pagination.vue'
+
 export default {
+  components: {
+    pagination
+  },
   data () {
     return {
       isLoading: false,
@@ -71,23 +66,28 @@ export default {
   },
   methods: {
     getOrders (page = 1) {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/orders?page=${page}`
 
-      self.isLoading = true
+      vm.isLoading = true
 
-      self.$http.get(api).then((res) => {
-        self.isLoading = false
+      vm.$http.get(api).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
-          self.orders = res.data.orders
-          self.pagination = res.data.pagination
+          vm.orders = res.data.orders
+          vm.pagination = res.data.pagination
+          vm.$bus.$emit('updatePagination', res.data.pagination)
         }
       })
     }
   },
   created () {
-    this.getOrders()
+    const vm = this
+    vm.getOrders()
+    vm.$bus.$on('toPage', (page) => {
+      vm.getOrders(page)
+    })
   }
 }
 </script>

@@ -13,10 +13,10 @@
                     </div>
 
                     <div>
-                        <ul class="mb-5">
-                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin')">登入</a></li>
-                            <li><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about')">品牌故事</a></li>
-                            <li><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products')">商品</a></li>
+                        <ul class="mb-5 pl-0">
+                            <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin')">登入</a></li>
+                            <li class="list-unstyled"><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about')">品牌故事</a></li>
+                            <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products')">商品</a></li>
                         </ul>
                     </div>
 
@@ -41,20 +41,20 @@
                 <div class="navBar" :class="{'navBarChange' : isPageover10px}">
 
                     <h1 class="logo d-flex justify-content-center mt-1" v-if="isHomepage">
-                        <a href="#" title="拍謝" @click.prevent="toWhere('home')" :class="{'logoDark' : isPageover10px}">
+                        <a href="#" title="拍謝" @click.prevent="toWhere('')" :class="{'logoDark' : isPageover10px}">
                             拍謝
                         </a>
                     </h1>
 
                     <h1 class="logo d-flex justify-content-center mt-1" v-if="!isHomepage">
-                        <a href="#" title="拍謝" @click.prevent="toWhere('home')" class="logoDark">
+                        <a href="#" title="拍謝" @click.prevent="toWhere('')" class="logoDark">
                             拍謝
                         </a>
                     </h1>
 
                     <div class="topMenu ml-auto" v-if="isHomepage">
-                        <ul class="d-flex">
-                            <li>
+                        <ul class="d-flex mb-0">
+                            <li class="list-unstyled">
                                 <a href="#" class="text-white" @click.prevent="toWhere('about')"
                                 @mouseover="aboutisHovering = true"
                                 @mouseout="aboutisHovering = false"
@@ -62,7 +62,7 @@
                                 >品牌故事</a>
                             </li>
 
-                            <li>
+                            <li class="list-unstyled">
                                 <a href="#" class="text-white" @click.prevent="toWhere('products')"
                                 @mouseover="productsisHovering = true"
                                 @mouseout="productsisHovering = false"
@@ -70,7 +70,7 @@
                                 >商品</a>
                             </li>
 
-                            <li>
+                            <li class="list-unstyled">
                                 <a href="#" class="text-white" @click.prevent="toWhere('signin')"
                                 @mouseover="signinisHovering = true"
                                 @mouseout="signinisHovering = false"
@@ -81,8 +81,8 @@
                     </div>
 
                     <div class="topMenu ml-auto" v-if="!isHomepage">
-                        <ul class="d-flex">
-                            <li>
+                        <ul class="d-flex mb-0">
+                            <li class="list-unstyled">
                                 <a href="#" @click.prevent="toWhere('about')"
                                 @mouseover="aboutisHovering = true"
                                 @mouseout="aboutisHovering = false"
@@ -90,7 +90,7 @@
                                 >品牌故事</a>
                             </li>
 
-                            <li>
+                            <li class="list-unstyled">
                                 <a href="#" @click.prevent="toWhere('products')"
                                 @mouseover="productsisHovering = true"
                                 @mouseout="productsisHovering = false"
@@ -98,7 +98,7 @@
                                 >商品</a>
                             </li>
 
-                            <li>
+                            <li class="list-unstyled">
                                 <a href="#" @click.prevent="toWhere('signin')"
                                 @mouseover="signinisHovering = true"
                                 @mouseout="signinisHovering = false"
@@ -138,7 +138,7 @@ export default {
   },
   methods: {
     toWhere (pageName) {
-      const self = this
+      const vm = this
 
       const htmlHref = window.location.href.replace(/^http:\/\/[^/]+/, '')
       const addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
@@ -147,7 +147,7 @@ export default {
 
       if (addrLast === pageName) { return }
 
-      self.hamburgerChange = false
+      vm.hamburgerChange = false
 
       $('.hamburgerMenu').removeClass('hamburgerMenuShow')
       $('.rightCurtain1').addClass('curtainShow')
@@ -156,24 +156,24 @@ export default {
       setTimeout(() => {
         document.body.scrollTop = 0
         document.documentElement.scrollTop = 0
-        self.$router.push(`/${pageName}`)
+        vm.$router.push(`/${pageName}`)
       }, 1200)
     },
 
     navBarchange () {
-      const self = this
+      const vm = this
       const pageScroll = window.scrollY
 
       $('.navBar').each(function () {
         if (pageScroll > 10) {
-          self.isPageover10px = true
+          vm.isPageover10px = true
         } else {
-          self.isPageover10px = false
+          vm.isPageover10px = false
         }
       })
     },
     onloadTopmenu () {
-      const self = this
+      const vm = this
 
       const htmlHref = window.location.href.replace(/^http:\/\/[^/]+/, '')
       const addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
@@ -182,48 +182,41 @@ export default {
 
       switch (addrLast) {
         case 'about' :
-          self.isHomepage = false
-          self.aboutisActive = true
-          self.productsisActive = false
-          self.signinisActive = false
+          vm.isHomepage = false
+          vm.aboutisActive = true
+          vm.productsisActive = false
+          vm.signinisActive = false
           break
         case 'products' :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = true
-          self.signinisActive = false
+          vm.isHomepage = false
+          vm.aboutisActive = false
+          vm.productsisActive = true
+          vm.signinisActive = false
           break
         case 'signin' :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = true
-          break
-        case 'home' :
-          self.isHomepage = true
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = false
+          vm.isHomepage = false
+          vm.aboutisActive = false
+          vm.productsisActive = false
+          vm.signinisActive = true
           break
         default :
-          self.isHomepage = false
-          self.aboutisActive = false
-          self.productsisActive = false
-          self.signinisActive = false
+          vm.isHomepage = false
+          vm.aboutisActive = false
+          vm.productsisActive = false
+          vm.signinisActive = false
           break
       }
     }
   },
   created () {
-    const self = this
+    const vm = this
 
-    self.$bus.$on('getPathName', () => {
-      self.onloadTopmenu()
+    vm.$bus.$on('getPathName', () => {
+      vm.onloadTopmenu()
     })
 
-    self.$bus.$on('toWhere', (pathName) => {
-      self.toWhere(pathName)
-      self.menuActive()
+    vm.$bus.$on('toWhere', (pathName) => {
+      vm.toWhere(pathName)
     })
 
     window.addEventListener('scroll', this.navBarchange)

@@ -14,24 +14,27 @@
 
         <!-- home頁面橫幅 -->
         <section>
+          <div class="banner d-flex align-items-center">
 
-            <div class="banner d-flex align-items-center">
-
-                <div class="bannerTitle">
-                    <h2 class="h1 text-primary">拍謝</h2>
-                    <h3 class="h1 text-white">對於影像設備</h3>
-                    <h3 class="h1 text-white">我們從不馬虎</h3>
-                </div>
-
+            <div class="bannerTitle">
+                <h2 class="h1 text-primary">拍謝</h2>
+                <h3 class="h1 text-white">對於影像設備</h3>
+                <h3 class="h1 text-white">我們從不馬虎</h3>
             </div>
 
+          </div>
+          <div class="d-flex justify-content-center bannerTobottom">
+            <a href="#" @click.prevent="toBottom">
+              <i class="fas fa-arrow-down"></i>
+            </a>
+          </div>
         </section>
         <!--  -->
 
         <!-- content內容 -->
         <section>
 
-            <div class="content my-5">
+            <div class="content my-5" id="content">
             <div class="container">
 
                 <div class="row d-flex flex-row-reverse my-5 preFadein">
@@ -60,7 +63,7 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="@/assets/img/tripod.jpg" alt="照相機 腳架" title="圖片源自 Unsplash">
+                        <img src="@/assets/img/tripod.jpeg" alt="照相機 腳架" title="圖片源自 Unsplash">
                     </div>
                 </div>
 
@@ -115,6 +118,10 @@
             class="h2"
             ></vue-typer>
 
+            <br>
+
+            <button type="button" class="btn btn-outline-primary btn-lg text-white mt-5 p-3" @click.prevent="toProducts('')">前 往 商 品 頁</button>
+
             </div>
 
             </video-bg>
@@ -126,56 +133,56 @@
         <!-- 訂閱我們以及手機model -->
         <section>
 
-            <div class="container my-5">
-                <div class="row preFadein">
+          <div class="container my-5">
+            <div class="row preFadein">
 
-                    <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                        <div>
-                        <div class="phoneAreaText">
-                            <h3 class="h1 text-primary">訂閱我們吧 !!</h3>
-                            <p class="h4 text-secondary my-3">現在訂閱 馬上享9折優惠</p>
-                            <p class="h4 text-secondary">我們會於每月10號寄送95折優惠券</p>
-                        </div>
-                        </div>
-                    </div>
+              <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                  <div>
+                  <div class="phoneAreaText">
+                      <h3 class="h1 text-primary">訂閱我們吧 !!</h3>
+                      <p class="h4 text-secondary my-3">現在訂閱 馬上享9折優惠</p>
+                      <p class="h4 text-secondary">我們會於每月10號寄送95折優惠券</p>
+                  </div>
+                  </div>
+              </div>
 
-                    <div class="col-lg-6 d-flex justify-content-center my-5">
-                        <div class="phoneCase preShake">
-                            <div class="phoneScreen">
-                                <div class="phonePage1 preFadeinRight">
-                                    <div class="text-center">
-                                    <img src="@/assets/img/email.svg" alt="email icon">
-                                    <br>
-                                    <h3 class="h4 text-secondary mt-3">請輸入您的電子信箱</h3>
+              <div class="col-lg-6 d-flex justify-content-center my-5">
+                  <div class="phoneCase preShake">
+                      <div class="phoneScreen">
+                          <div class="phonePage1 preFadeinRight">
+                              <div class="text-center">
+                              <img src="@/assets/img/email.svg" alt="email icon">
+                              <br>
+                              <h3 class="h4 text-secondary mt-5">請輸入您的電子信箱</h3>
 
-                                    <validation-observer v-slot="{ invalid }">
-                                    <form @submit.prevent="showPhonePage2">
-                                    <validation-provider rules="required|email" v-slot="{ errors , classes }">
-                                    <input type="email" v-model="emailAddress" :class="classes" name="電子信箱">
-                                    <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
-                                    </validation-provider>
+                              <validation-observer v-slot="{ invalid }">
+                              <form @submit.prevent="showPhonePage2">
+                              <validation-provider rules="required|email" v-slot="{ errors , classes }">
+                              <input type="email" v-model="emailAddress" :class="classes" name="電子信箱">
+                              <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
+                              </validation-provider>
 
-                                    <button type="submit" class="btn-primary text-white mt-3 ml-auto" :disabled="invalid">送出</button>
-                                    </form>
-                                    </validation-observer>
-                                    </div>
-                                </div>
-                                <div class="phonePage2">
-                                    <div class="text-center">
-                                    <img src="@/assets/img/thank-you.svg" alt="thank you">
-                                    </div>
-                                    <h3 class="h2 text-secondary">感謝您的訂閱</h3>
-                                    <p class="h5 text-secondary my-4">您的專屬9折優惠碼↓↓↓</p>
-                                    <p class="h2 text-primary couponCode">10off_sale</p>
-                                </div>
-                            </div>
-                            <div class="topCamera"></div>
-                            <div class="phoneBottomLine"></div>
-                        </div>
-                    </div>
+                              <button type="submit" class="btn-primary text-white mt-3 ml-auto" :disabled="invalid">送出</button>
+                              </form>
+                              </validation-observer>
+                              </div>
+                          </div>
+                          <div class="phonePage2">
+                              <div class="text-center">
+                              <img src="@/assets/img/thank-you.svg" alt="thank you">
+                              </div>
+                              <h3 class="h2 text-secondary">感謝您的訂閱</h3>
+                              <p class="h5 text-secondary my-4">您的專屬9折優惠碼↓↓↓</p>
+                              <p class="h2 text-primary couponCode">10off_sale</p>
+                          </div>
+                      </div>
+                      <div class="topCamera"></div>
+                      <div class="phoneBottomLine"></div>
+                  </div>
+              </div>
 
-                </div>
             </div>
+          </div>
 
         </section>
         <!--  -->
@@ -240,26 +247,30 @@ export default {
       $('.phonePage2').addClass('fadeIn')
     },
     toProducts (selected) {
-      const self = this
+      const vm = this
 
-      self.$bus.$emit('toWhere', 'products')
+      vm.$bus.$emit('toWhere', 'products')
 
       setTimeout(() => {
-        self.$router.push('/products')
+        vm.$router.push('/products')
       }, 1000)
       setTimeout(() => {
-        self.$bus.$emit('getProducts', selected)
+        vm.$bus.$emit('getProducts', selected)
       }, 1100)
       setTimeout(() => {
         document.body.scrollTop = 500
         document.documentElement.scrollTop = 500
       }, 1210)
+    },
+    toBottom () {
+      const contentPos = $('#content').offset().top
+      $('html,body').animate({ scrollTop: contentPos - 100 }, '5000')
     }
   },
   created () {
-    const self = this
-    self.openPage()
-    self.$bus.$emit('getPathName')
+    const vm = this
+    vm.openPage()
+    vm.$bus.$emit('getPathName')
     window.addEventListener('scroll', this.addAnimate)
   }
 }

@@ -10,10 +10,10 @@
 
 <script>
 
-import navBar from './navBar'
-import footerBar from './footer'
-import cart from './cart'
-import backTop from './backtoTop'
+import navBar from './NavBar'
+import footerBar from './Footer'
+import cart from './Cart'
+import backTop from './BacktoTop'
 
 export default {
   components: {

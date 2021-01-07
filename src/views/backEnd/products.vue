@@ -181,17 +181,7 @@
         <!--  -->
 
         <!-- 分頁 -->
-        <section>
-
-            <div class="d-flex justify-content-center mb-5">
-                <ul class="pagination">
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_pre}" @click.prevent="getProducts(pagination.current_page - 1)">⬅</a></span></li>
-                    <li v-for="item in pagination.total_pages" :key="item.id" :class="{'pageActive' : pagination.current_page === item}"><a href="#" :class="{'text-white' : pagination.current_page === item}" @click.prevent="getProducts(item)"> {{ item }} </a></li>
-                    <li><span><a href="#" :class="{'pageDisabled' : !pagination.has_next}" @click.prevent="getProducts(pagination.current_page + 1)">➡</a></span></li>
-                </ul>
-            </div>
-
-        </section>
+        <pagination></pagination>
         <!--  -->
 
     </div>
@@ -200,14 +190,17 @@
 <script>
 
 import $ from 'jquery'
+import pagination from '@/components/Pagination.vue'
 
 export default {
+  components: {
+    pagination
+  },
   data () {
     return {
       isNew: false,
       products: [],
       tempProduct: {},
-      pagination: {},
       fileUploadedStatus: false,
       updateProductLoadingIcon: false,
       isLoading: false
@@ -216,74 +209,74 @@ export default {
   methods: {
     getProducts (page = 1) {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/products?page=${page}`
-      const self = this
+      const vm = this
 
-      self.isLoading = true
-      self.$http.get(api).then((res) => {
-        self.isLoading = false
+      vm.isLoading = true
+      vm.$http.get(api).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
-          self.products = res.data.products
-          self.pagination = res.data.pagination
+          vm.products = res.data.products
           $('.curtain').addClass('curtainShow')
+          vm.$bus.$emit('updatePagination', res.data.pagination)
         } else {
           alert('商品資料讀取失敗')
         }
       })
     },
     openProductModal (isNew, item) {
-      const self = this
+      const vm = this
 
       if (isNew) {
-        self.tempProduct = {}
-        self.isNew = true
+        vm.tempProduct = {}
+        vm.isNew = true
       } else {
-        self.tempProduct = Object.assign({}, item)
-        self.isNew = false
+        vm.tempProduct = { ...item }
+        vm.isNew = false
       }
       $('#productModal').modal('show')
     },
     openDelproductModal (item) {
-      const self = this
+      const vm = this
 
-      self.tempProduct = item
+      vm.tempProduct = item
       $('#delProductModal').modal('show')
     },
     updateProduct () {
-      const self = this
+      const vm = this
       let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product`
       let httpMethod = 'post'
 
-      self.isLoading = true
-      self.updateProductLoadingIcon = true
+      vm.isLoading = true
+      vm.updateProductLoadingIcon = true
 
-      if (self.isNew === false) {
+      if (vm.isNew === false) {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product/${this.tempProduct.id}`
         httpMethod = 'put'
       }
 
-      self.$http[httpMethod](api, { data: self.tempProduct }).then((res) => {
-        self.isLoading = false
+      vm.$http[httpMethod](api, { data: vm.tempProduct }).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
-          self.updateProductLoadingIcon = false
+          vm.updateProductLoadingIcon = false
           $('#productModal').modal('hide')
-          self.getProducts()
+          vm.getProducts()
         } else {
-          self.updateProductLoadingIcon = false
+          vm.updateProductLoadingIcon = false
           $('#productModal').modal('hide')
           alert('商品更新失敗')
         }
       })
     },
     delProduct (id) {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/product/${id}`
 
-      self.isLoading = true
+      vm.isLoading = true
 
-      self.$http.delete(api).then((res) => {
-        self.isLoading = false
+      vm.$http.delete(api).then((res) => {
+        vm.isLoading = false
 
         if (res.data.success) {
           console.log(res.data.message)
@@ -296,33 +289,37 @@ export default {
       })
     },
     uploadFile () {
-      const self = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/admin/upload`
-      const uploadedFile = self.$refs.files.files[0]
+      const uploadedFile = vm.$refs.files.files[0]
       const formData = new FormData()
 
-      self.fileUploadedStatus = true
-      self.tempProduct.imageUrl = ''
+      vm.fileUploadedStatus = true
+      vm.tempProduct.imageUrl = ''
 
       formData.append('file-to-upload', uploadedFile)
 
-      self.$http.post(api, formData, {
+      vm.$http.post(api, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       }).then((res) => {
         if (res.data.success) {
-          self.fileUploadedStatus = false
-          self.$set(self.tempProduct, 'imageUrl', res.data.imageUrl)
+          vm.fileUploadedStatus = false
+          vm.$set(vm.tempProduct, 'imageUrl', res.data.imageUrl)
         } else {
-          self.fileUploadedStatus = false
+          vm.fileUploadedStatus = false
           alert(res.data.message.message)
         }
       })
     }
   },
   created () {
-    this.getProducts()
+    const vm = this
+    vm.getProducts()
+    vm.$bus.$on('toPage', (page) => {
+      vm.getProducts(page)
+    })
   }
 }
 </script>

@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import navBar from './navBar'
+import navBar from './NavBar'
 export default {
   components: {
     navBar
   },
   created () {
-    const self = this
+    const vm = this
     const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)youxiaaaToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-    self.$http.defaults.headers.common.Authorization = myCookie
+    vm.$http.defaults.headers.common.Authorization = myCookie
   }
 }
 </script>
