@@ -243,8 +243,8 @@ export default {
         if (res.data.success) {
           vm.products = res.data.products
           vm.pages = res.data.pagination
-          document.body.scrollTop = 650
-          document.documentElement.scrollTop = 650
+          document.body.scrollTop = 500
+          document.documentElement.scrollTop = 500
           vm.$bus.$emit('updatePagination', res.data.pagination)
         } else {
           alert('商品載入失敗')
