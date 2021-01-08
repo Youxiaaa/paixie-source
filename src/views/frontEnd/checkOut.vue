@@ -174,7 +174,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between px-3 my-4" v-if="carts.total !== carts.final_total">
-                      <h3 class="card-subtitle text-muted h5">折扣後金額</h3>
+                      <h3 class="card-subtitle text-muted h6">折扣後金額</h3>
                       <p class="card-subtitle text-muted"> <span class="text-primary h4 font-weight-bold"> {{ carts.final_total | dollarSign}} </span>元整</p>
                     </div>
 
