@@ -1,9 +1,9 @@
 <template>
     <div>
 
-        <navBar></navBar>
+      <navBar></navBar>
 
-        <router-view></router-view>
+      <router-view></router-view>
 
     </div>
 </template>

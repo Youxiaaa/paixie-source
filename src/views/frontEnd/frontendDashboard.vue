@@ -1,10 +1,12 @@
 <template>
     <div>
-        <navBar></navBar>
-        <cart></cart>
-        <router-view></router-view>
-        <footerBar></footerBar>
-        <backTop></backTop>
+      <div class="content-area">
+          <navBar></navBar>
+          <cart></cart>
+          <router-view></router-view>
+          <backTop></backTop>
+      </div>
+          <footerBar></footerBar>
     </div>
 </template>
 

@@ -69,6 +69,7 @@ html,body{
   margin: 0 !important;
   padding: 0 20px !important;
 }
+
 .listFix li{
   list-style-type: decimal;
   list-style-position: inside;
@@ -76,18 +77,26 @@ html,body{
   padding-left: 1em;
   line-height: 20px;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
 input[type="number"]{
     -moz-appearance: textfield;
 }
+
 input[type="button"]:active{
   outline: none !important;
 }
+
 .couponInput{
   width: 80% !important;
+}
+
+.content-area{
+  min-height: calc(100vh - 160px);
 }
 ///////////////////////////////////////////////////
 
@@ -428,7 +437,7 @@ input[type="button"]:active{
 
 //////////////////// banner ////////////////////
 .banner{
-  background-image: url('../src/assets/img/landing-banner.jpeg');
+  background-image: url('../src/assets/img/landing-banner.jpg');
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -437,13 +446,23 @@ input[type="button"]:active{
   padding: 20px 40px;
 }
 
+.phonesizeBannerTitle{
+  background-color: rgba(0 , 0 , 0 , 0.6);
+  padding: 25px;
+}
+
+.phonesizeBannerTitle h3{
+  font-size: 40px;
+}
+
 .bannerTobottom{
   margin-top: -50px;
   animation: 5s infinite float;
 }
 
 .bannerTobottom i{
-  font-size: 34px;
+  font-size: 40px;
+  color: $primary;
 }
 
 @keyframes float{
@@ -472,8 +491,14 @@ input[type="button"]:active{
       display: flex;
       justify-content: center;
   }
-  .bannerTitle h3{
-      font-size: 40px !important;
+  .bannerTitle{
+      display: none;
+  }
+}
+
+@media(min-width : 415px){
+  .phonesizeBannerTitle{
+    display: none;
   }
 }
 ////////////////////////////////////////////////////////////
@@ -530,7 +555,7 @@ input[type="button"]:active{
 .home-product-item-img1::after{
   content: "";
   top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0 , 0 , 0 , 0.4);
+  background-color: rgba(0 , 0 , 0 , 0.5);
   position: absolute;
   z-index: 10;
 }
@@ -538,7 +563,7 @@ input[type="button"]:active{
 .home-product-item-img2::after{
   content: "";
   top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0 , 0 , 0 , 0.4);
+  background-color: rgba(0 , 0 , 0 , 0.5);
   position: absolute;
   z-index: 10;
 }
@@ -546,7 +571,7 @@ input[type="button"]:active{
 .home-product-item-img3::after{
   content: "";
   top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0 , 0 , 0 , 0.4);
+  background-color: rgba(0 , 0 , 0 , 0.5);
   position: absolute;
   z-index: 10;
 }
@@ -630,12 +655,12 @@ input[type="button"]:active{
   position: absolute;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 90px;
   z-index: 1;
 }
 
 .phonePage1 img{
-  width: 45%;
+  width: 50%;
 }
 
 .phonePage1 input{
@@ -649,7 +674,6 @@ input[type="button"]:active{
 
 .phonePage1 button{
   padding: 10px;
-  border: 3px solid $secondary;
 }
 
 .phonePage1 button:active{
@@ -856,7 +880,7 @@ input[type="button"]:active{
 .signupPos{
   position: absolute;
   width: 360px;
-  top: -100%;
+  top: -120%;
   left: 50%;
   transform: translateX(-180px);
   background-color: #fff;
