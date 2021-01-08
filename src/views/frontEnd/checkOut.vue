@@ -160,12 +160,12 @@
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between px-3 my-4">
-                      <h3 class="card-subtitle text-muted h5">訂單數量</h3>
+                      <h3 class="card-subtitle text-muted h6">訂單數量</h3>
                       <p class="card-subtitle text-muted"> {{ cartsLen }} / 件</p>
                     </div>
 
                     <div class="d-flex justify-content-between px-3">
-                      <h3 class="card-subtitle text-muted h5">金額</h3>
+                      <h3 class="card-subtitle text-muted h6">金額</h3>
                       <p class="card-subtitle text-muted">
                         <i class="fas fa-spinner fa-spin" v-if="countIsloading"></i>
                         <span class="text-primary h5 font-weight-bold" v-if="carts.total === carts.final_total && !countIsloading"> {{ carts.total | dollarSign}} </span>
@@ -178,11 +178,13 @@
                       <p class="card-subtitle text-muted"> <span class="text-primary h4 font-weight-bold"> {{ carts.final_total | dollarSign}} </span>元整</p>
                     </div>
 
+                    <div class="px-3">
                     <div class="btn-group mt-3 d-flex">
                     <input type="text" placeholder="請輸入優惠券" v-model="coupon.code" class="couponInput" @keyup.enter="addCoupon">
                     <div class="btn btn-primary text-white" :class="{'pageDisabled': !coupon.code}" @click.prevent="addCoupon">
                       <i class="fas fa-paper-plane" v-if="!couponIssend"></i>
                       <i class="fas fa-spinner fa-spin" v-if="couponIssend"></i>
+                    </div>
                     </div>
                     </div>
 
