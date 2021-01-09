@@ -49,7 +49,7 @@
         <!-- 產品列表 -->
         <section>
 
-          <div class="px-5 mt-3">
+          <div class="px-3 mt-3">
 
           <div class="row">
             <div class="col-md-3">
@@ -76,13 +76,13 @@
             <div class="col-md-9 mb-5">
               <div class="container">
                 <div class="row">
-                <div class="col-lg-6 pt-4" v-for="item in updateProducts" :key="item.id">
+                <div class="col-lg-4 pt-4" v-for="item in updateProducts" :key="item.id">
                 <div class="row h-100 d-flex justify-content-center pt-5">
                   <div class="products-item px-3 mt-2">
 
                     <div class="col" @click.prevent="openProductModal(item)">
                       <div class="d-flex justify-content-center">
-                      <img :src="item.imageUrl" alt="" height="200px">
+                      <img :src="item.imageUrl" alt="" height="150px">
                       </div>
                     </div>
                     <div class="col px-2">

@@ -108,14 +108,15 @@
       </section>
 
       <section>
-        <div class="px-5 mb-5 preFadein">
+        <div class="mb-5 preFadein">
           <div class="d-flex justify-content-center mb-5">
               <h2 class="h2 text-primary">聯 絡 我 們</h2>
           </div>
-          <div class="row">
+          <div class="container">
+            <div class="row">
 
               <div class="col-md-6 mt-3">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.148564952403!2d121.53281808512104!3d25.062953260335743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a959a9ce781b%3A0xb0c2ef0be716c094!2z6KGM5aSp5a6u!5e0!3m2!1szh-TW!2stw!4v1609195474781!5m2!1szh-TW!2stw" width="100%" height="650px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.148564952403!2d121.53281808512104!3d25.062953260335743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a959a9ce781b%3A0xb0c2ef0be716c094!2z6KGM5aSp5a6u!5e0!3m2!1szh-TW!2stw!4v1609195474781!5m2!1szh-TW!2stw" width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
               </div>
 
               <div class="col-md-6 bg-light p-3 mt-3">
@@ -155,7 +156,7 @@
                       <label class="mb-2 text-secondary" for="textArea">留言 <span class="text-danger">*</span></label>
                       <br>
                       <div>
-                          <textarea name="留言" id="textArea" cols="30" rows="10"  style="width : 100%" v-model="user.message" :class="classes"></textarea>
+                          <textarea name="留言" id="textArea" cols="20" rows="5"  style="width : 100%" v-model="user.message" :class="classes"></textarea>
                           <span class="invalid-feedback"> {{ errors[0] }}唷 </span>
                       </div>
                       </div>
@@ -171,6 +172,7 @@
 
               </div>
 
+            </div>
           </div>
         </div>
       </section>
