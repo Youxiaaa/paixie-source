@@ -79,7 +79,7 @@
                 <div class="col-6 col-md-4 col-xl-3 pt-4 px-0" v-for="item in updateProducts" :key="item.id">
                   <div class="products-item px-3 d-flex flex-column h-100">
                       <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
-                      <img :src="item.imageUrl" alt="" height="160px">
+                      <img :src="item.imageUrl" alt="" height="130px">
                       </div>
                       <div @click="openProductModal(item)" class="my-2 mt-auto">
                         <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
