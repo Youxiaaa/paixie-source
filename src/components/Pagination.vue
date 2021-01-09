@@ -7,7 +7,6 @@
         <li><span><a href="#" @click.prevent="toPage(pages.current_page + 1)" :class="{'pageDisabled' : !pages.has_next}">➡</a></span></li>
     </ul>
     </div>
-
   </div>
 </template>
 <script>

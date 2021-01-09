@@ -201,7 +201,6 @@ export default {
       addToCartLoading: false,
       selected: '',
       isLoading: false,
-      pageHide: false,
       cartsData: JSON.parse(localStorage.getItem('cartsData')) || []
     }
   },
@@ -236,7 +235,6 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products?page=${page}`
 
       vm.isLoading = true
-      vm.pageHide = false
       vm.$http.get(api).then((res) => {
         vm.isLoading = false
 
