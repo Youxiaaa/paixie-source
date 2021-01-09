@@ -52,7 +52,7 @@
           <div class="px-3 mt-3">
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-lg-3">
             <div class="sticky-top">
               <div class="d-flex justify-content-center">
                 <div class="card sideMenu w-100 bg-light border-0">
@@ -73,37 +73,26 @@
             </div>
             </div>
 
-            <div class="col-md-9 mb-5">
+            <div class="col-lg-9 mb-5">
               <div class="container">
                 <div class="row">
-                <div class="col-lg-4 pt-4" v-for="item in updateProducts" :key="item.id">
-                <div class="row h-100 d-flex justify-content-center pt-5">
-                  <div class="products-item px-3 mt-2">
-
-                    <div class="col" @click.prevent="openProductModal(item)">
-                      <div class="d-flex justify-content-center">
+                <div class="col-md-4 pt-4 px-0" v-for="item in updateProducts" :key="item.id">
+                  <div class="products-item px-3 mt-2 d-flex flex-column h-100">
+                      <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
                       <img :src="item.imageUrl" alt="" height="150px">
                       </div>
-                    </div>
-                    <div class="col px-2">
-                      <div>
-                        <h2 class="h5 text-primary my-3 titleEllipsis" @click.prevent="openProductModal(item)"> {{ item.title }} </h2>
-                        <span class="ellipsis" @click.prevent="openProductModal(item)"> {{ item.description }} </span>
+                      <div @click="openProductModal(item)">
+                        <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
+                        <span class="ellipsis"> {{ item.description }} </span>
                       </div>
-                      <div class="my-3 d-flex">
-                        <del class="h5 mr-auto align-self-center" @click="openProductModal(item)"> {{ item.origin_price | dollarSign }} </del>
-                        <small class="text-danger h5 align-self-center" @click="openProductModal(item)"> {{ item.price | dollarSign }} </small>
-                        <button class="btn btn-primary text-white ml-3" @click.prevent="addToCart(item)">
-                            <i class="fas fa-cart-arrow-down"></i>
-                        </button>
+                      <div class="my-3 d-flex mb-auto" @click="openProductModal(item)">
+                        <del class="h5 mr-auto align-self-center"> {{ item.origin_price | dollarSign }} </del>
+                        <small class="text-danger h5 align-self-center"> {{ item.price | dollarSign }} </small>
                       </div>
-                    </div>
-
+                        <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
                   </div>
                 </div>
                 </div>
-                </div>
-
               </div>
 
               <pagination></pagination>

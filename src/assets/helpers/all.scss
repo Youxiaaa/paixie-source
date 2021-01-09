@@ -976,10 +976,11 @@ input[type="button"]:active{
 }
 
 .products-item{
-  width: 90%;
+  width: 95%;
   overflow: hidden;
+  margin: 0 auto;
   transition: 0.3s ease;
-  box-shadow: 0 0 5px rgba(0 , 0 , 0 , 0.3);
+  box-shadow: 0 0 5px rgba(0 , 0 , 0 , 0.2);
 }
 
 .products-item img{
@@ -987,13 +988,8 @@ input[type="button"]:active{
 }
 
 .products-item:hover{
-  box-shadow: 0 0 10px rgba(0 , 0 , 0 , 0.3);
-  cursor: pointer;
-}
-
-.products-item:active{
-  transform: translateY(5px);
-  box-shadow: 0 0 10px rgba(0 , 0 , 0 , 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(0 , 0 , 0 , 0.4);
   cursor: pointer;
 }
 
@@ -1176,9 +1172,14 @@ input[type="button"]:active{
   background-color: $primary
 }
 
+.phoneAddtocartBtn{
+  display: none;
+}
+
 ////////////////////////////////////////////////////////////
 
 //////////////////// cart responsive ////////////////////
+
 @media(max-width : 415px){
   .cartItem{
       width: 95%;

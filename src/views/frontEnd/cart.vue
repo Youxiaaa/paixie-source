@@ -42,47 +42,46 @@
             <table class="table computerSizeTable" v-if="cartsData.length > 0">
 
                 <thead>
-                    <tr class="bg-secondary text-white">
-                        <th width="5%"></th>
-                        <th class="cartImg" width="10%"></th>
-                        <th>品名</th>
-                        <th class="text-center" width="15%"> 數量 </th>
-                        <th width="10%">金額</th>
-                    </tr>
+                  <tr class="bg-secondary text-white">
+                    <th width="5%"></th>
+                    <th class="cartImg" width="10%"></th>
+                    <th>品名</th>
+                    <th class="text-center" width="15%"> 數量 </th>
+                    <th width="10%">金額</th>
+                  </tr>
                 </thead>
 
                 <tbody>
-                    <tr v-for="item in cartsData" :key="item.id">
-                        <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
-                        <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
-                        <td>
-                            <span class="text-secondary"> {{ item.title }} </span>
-                        </td>
-                        <td class="text-center">
-                          <div class="btn-group">
-                            <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
-                            <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
-                            <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
-                          </div>
-                          <br>
-                        </td>
-                        <td class="text-primary text-right"> {{ item.price * item.qty | dollarSign}} </td>
-                    </tr>
+                  <tr v-for="item in cartsData" :key="item.id">
+                    <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
+                    <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
+                    <td>
+                      <span class="text-secondary"> {{ item.title }} </span>
+                    </td>
+                    <td class="text-center">
+                    <div class="btn-group">
+                      <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
+                      <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
+                      <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
+                    </div>
+                    <br>
+                    </td>
+                    <td class="text-primary text-right"> {{ item.price * item.qty | dollarSign}} </td>
+                  </tr>
                 </tbody>
 
                 <tfoot>
-                    <tr>
-                        <td colspan="5">
-                            <div class="couponItem" v-if="cartsData.length > 0">
-                            <div class="d-flex mb-2">
-                                <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
-                                <span class="d-flex align-self-center h3 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
-                            </div>
-                            <button type="button" class="btn btn-lg btn-primary text-white d-flex ml-auto" @click.prevent="toCheckout">結帳去</button>
-                            </div>
-
-                        </td>
-                    </tr>
+                  <tr>
+                    <td colspan="5">
+                      <div class="couponItem" v-if="cartsData.length > 0">
+                      <div class="d-flex mb-2">
+                        <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
+                        <span class="d-flex align-self-center h3 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
+                      </div>
+                      <button type="button" class="btn btn-lg btn-primary text-white d-flex ml-auto" @click.prevent="toCheckout">結帳去</button>
+                      </div>
+                    </td>
+                  </tr>
                 </tfoot>
 
             </table>
@@ -90,40 +89,39 @@
             <table class="table phoneSizeTable" v-if="cartsData.length > 0">
 
                 <thead>
-                    <tr class="bg-secondary text-white">
-                        <th colspan="3">購物車資訊</th>
-                    </tr>
+                  <tr class="bg-secondary text-white">
+                    <th colspan="3">購物車資訊</th>
+                  </tr>
                 </thead>
 
                 <tbody>
-                    <tr v-for="item in cartsData" :key="item.id">
-                        <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
-                        <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
-                        <td>
-                          <span class="h6 mb-2 text-secondary"> {{ item.title }} </span>
-                          <br>
-                          <span class="text-primary"> {{ item.price * item.qty | dollarSign}} </span>
-                          <br>
-                          <div class="btn-group mt-2">
-                            <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
-                            <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
-                            <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
-                          </div>
-                        </td>
-                    </tr>
+                  <tr v-for="item in cartsData" :key="item.id">
+                    <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
+                    <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
+                    <td>
+                      <span class="h6 mb-2 text-secondary"> {{ item.title }} </span>
+                      <br>
+                      <span class="text-primary"> {{ item.price * item.qty | dollarSign}} </span>
+                      <br>
+                      <div class="btn-group mt-2">
+                        <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
+                        <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
+                        <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
 
                 <tfoot>
                     <tr>
                         <td colspan="5">
-                            <div class="couponItem" v-if="cartsData.length > 0">
-                            <div class="d-flex mb-2">
-                                <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
-                                <span class="d-flex align-self-center h4 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
-                            </div>
+                          <div class="couponItem" v-if="cartsData.length > 0">
+                          <div class="d-flex mb-2">
+                            <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
+                            <span class="d-flex align-self-center h4 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
+                          </div>
                             <button type="button" class="btn btn-lg btn-primary text-white d-flex ml-auto" @click.prevent="toCheckout">結帳去</button>
-                            </div>
-
+                          </div>
                         </td>
                     </tr>
                 </tfoot>
@@ -138,30 +136,20 @@
               <h2 class="d-flex justify-content-center my-5 h2 text-primary" v-if="cartsData.length !== 0">推 薦 商 品</h2>
 
               <div class="row" v-if="cartsData.length !== 0">
-                <div class="col-lg-6" v-for="item in filterProducts" :key="item.id">
-                  <div class="row h-100 d-flex justify-content-center">
-                    <div class="products-item p-1 my-2">
-
-                      <div class="col" @click.prevent="openProductModal(item)">
-                        <div class="d-flex justify-content-center">
-                        <img :src="item.imageUrl" alt="商品圖片" height="200px">
-                        </div>
-                      </div>
-                      <div class="col px-4">
-                        <div>
-                          <h2 class="h5 text-primary my-3 titleEllipsis" @click.prevent="openProductModal(item)"> {{ item.title }} </h2>
-                          <span class="ellipsis" @click.prevent="openProductModal(item)"> {{ item.description }} </span>
-                        </div>
-                        <div class="my-3 d-flex">
-                          <del class="h5 mr-auto align-self-center" @click.prevent="openProductModal(item)"> {{ item.origin_price | dollarSign }} </del>
-                          <small class="text-danger h5 align-self-center" @click.prevent="openProductModal(item)"> {{ item.price | dollarSign }} </small>
-                          <button class="btn btn-primary text-white ml-3" @click.prevent="addToCart(item)">
-                            <i class="fas fa-cart-arrow-down"></i>
-                          </button>
-                        </div>
-                      </div>
-
+                <div class="col-md-4 pt-4 px-0" v-for="item in products" :key="item.id">
+                  <div class="products-item px-3 mt-2 d-flex flex-column h-100">
+                    <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
+                    <img :src="item.imageUrl" alt="" height="150px">
                     </div>
+                    <div @click="openProductModal(item)">
+                      <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
+                      <span class="ellipsis"> {{ item.description }} </span>
+                    </div>
+                    <div class="my-3 d-flex mb-auto" @click="openProductModal(item)">
+                      <del class="h5 mr-auto align-self-center"> {{ item.origin_price | dollarSign }} </del>
+                      <small class="text-danger h5 align-self-center"> {{ item.price | dollarSign }} </small>
+                    </div>
+                      <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
                   </div>
                 </div>
               </div>
@@ -272,7 +260,13 @@ export default {
 
       vm.$http.get(api).then((res) => {
         if (res.data.success) {
-          vm.products = res.data.products
+          const cacheProducts = []
+          res.data.products.forEach((item) => {
+            if (item.price < 5000) {
+              cacheProducts.push(item)
+            }
+            vm.products = cacheProducts
+          })
           vm.productsIsLoading = true
         } else {
           vm.$router.push('home')
