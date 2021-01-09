@@ -1058,9 +1058,21 @@ input[type="button"]:active{
   }
 }
 
+@media(max-width : 415px){
+  .computer-item-price{
+    display: none;
+  }
+}
+
 @media(max-width : 413px){
   .product-title{
       font-size: 32px;
+  }
+}
+
+@media(min-width : 415px){
+  .phone-item-price{
+    display: none;
   }
 }
 ////////////////////////////////////////////////////////////

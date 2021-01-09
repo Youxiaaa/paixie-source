@@ -136,20 +136,22 @@
               <h2 class="d-flex justify-content-center my-5 h2 text-primary" v-if="cartsData.length !== 0">推 薦 商 品</h2>
 
               <div class="row" v-if="cartsData.length !== 0">
-                <div class="col-md-4 pt-4 px-0" v-for="item in products" :key="item.id">
-                  <div class="products-item px-3 mt-2 d-flex flex-column h-100">
-                    <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
-                    <img :src="item.imageUrl" alt="" height="180px">
-                    </div>
-                    <div @click="openProductModal(item)" class="my-2">
-                      <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
-                      <span class="ellipsis"> {{ item.description }} </span>
-                    </div>
-                    <div class="my-3 d-flex mt-auto" @click="openProductModal(item)">
-                      <del class="h5 mr-auto align-self-center"> {{ item.origin_price | dollarSign }} </del>
-                      <small class="text-danger h5 align-self-center"> {{ item.price | dollarSign }} </small>
-                    </div>
-                      <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
+                <div class="col-6 col-md-4 col-xl-3 pt-4 px-0" v-for="item in products" :key="item.id">
+                  <div class="products-item px-3 d-flex flex-column h-100">
+                      <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
+                      <img :src="item.imageUrl" alt="" height="160px">
+                      </div>
+                      <div @click="openProductModal(item)" class="my-2 mt-auto">
+                        <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
+                        <span class="ellipsis"> {{ item.description }} </span>
+                      </div>
+                      <div class="my-3 d-flex mt-auto" @click="openProductModal(item)">
+                        <del class="h5 mr-auto align-self-center computer-item-price"> {{ item.origin_price | dollarSign }} </del>
+                        <small class="text-danger h5 align-self-center computer-item-price"> {{ item.price | dollarSign }} </small>
+                      </div>
+                        <del class="h5 ml-auto phone-item-price"> NTD{{ item.origin_price | dollarSign }} </del>
+                        <small class="text-danger ml-auto h5 phone-item-price"> NTD{{ item.price | dollarSign }} </small>
+                        <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
                   </div>
                 </div>
               </div>
