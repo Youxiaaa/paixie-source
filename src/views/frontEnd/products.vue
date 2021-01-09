@@ -81,11 +81,11 @@
                       <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
                       <img :src="item.imageUrl" alt="" height="180px">
                       </div>
-                      <div @click="openProductModal(item)">
+                      <div @click="openProductModal(item)" class="my-2">
                         <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
                         <span class="ellipsis"> {{ item.description }} </span>
                       </div>
-                      <div class="my-3 d-flex mb-auto" @click="openProductModal(item)">
+                      <div class="my-3 d-flex mt-auto" @click="openProductModal(item)">
                         <del class="h5 mr-auto align-self-center"> {{ item.origin_price | dollarSign }} </del>
                         <small class="text-danger h5 align-self-center"> {{ item.price | dollarSign }} </small>
                       </div>
