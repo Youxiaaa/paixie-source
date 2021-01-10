@@ -256,7 +256,7 @@ export default {
         }
       })
     },
-    checkOut () {
+    checkOut (payMethod) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/order`
 
@@ -264,14 +264,10 @@ export default {
       vm.$http.post(api, { data: vm.checkoutData }).then((res) => {
         if (res.data.success) {
           vm.$bus.$emit('updateCart')
+          vm.$router.push(`checkOrder/${res.data.orderId}`)
           setTimeout(() => {
-            vm.$router.push(`checkOrder/${res.data.orderId}`)
-          }, 500)
-          setTimeout(() => {
-            vm.$bus.$emit('PayMethod', vm.payMethods)
-          }, 520)
-        } else {
-          alert('訂單發生錯誤')
+            vm.$bus.$emit('PayMethod', payMethod)
+          }, 100)
         }
       })
     },
