@@ -89,8 +89,8 @@
                         <del class="h5 mr-auto align-self-center computer-item-price"> {{ item.origin_price | dollarSign }} </del>
                         <small class="text-danger h5 align-self-center computer-item-price"> {{ item.price | dollarSign }} </small>
                       </div>
-                        <del class="h5 ml-auto phone-item-price"> NTD{{ item.origin_price | dollarSign }} </del>
-                        <small class="text-danger ml-auto h5 phone-item-price"> NTD{{ item.price | dollarSign }} </small>
+                        <del class="h5 ml-auto phone-item-price" @click="openProductModal(item)"> NTD{{ item.origin_price | dollarSign }} </del>
+                        <small class="text-danger ml-auto h5 phone-item-price" @click="openProductModal(item)"> NTD{{ item.price | dollarSign }} </small>
                         <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
                   </div>
                 </div>
