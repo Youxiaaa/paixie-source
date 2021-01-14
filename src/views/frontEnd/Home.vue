@@ -256,15 +256,8 @@ export default {
       vm.$bus.$emit('toWhere', 'products')
 
       setTimeout(() => {
-        vm.$router.push('/products')
-      }, 1000)
-      setTimeout(() => {
         vm.$bus.$emit('getProducts', selected)
       }, 1100)
-      setTimeout(() => {
-        document.body.scrollTop = 500
-        document.documentElement.scrollTop = 500
-      }, 1210)
     },
     toBottom () {
       const contentPos = $('#content').offset().top

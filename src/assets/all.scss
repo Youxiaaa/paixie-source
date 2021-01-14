@@ -1032,6 +1032,17 @@ input[type="button"]:active{
   color: #fff;
 }
 
+.preProductShow{
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 1s ease;
+}
+
+.productShow{
+  transform: translateY(0);
+  opacity: 1;
+}
+
 @media(max-width : 768px){
   .model-img{
       height: 250px;
