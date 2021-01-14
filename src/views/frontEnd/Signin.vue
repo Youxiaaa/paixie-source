@@ -15,7 +15,7 @@
       </section>
 
       <section>
-        <div class="signinArea">
+        <div class="signinArea preFadein" :class="{'fadeIn' : showSignin}">
 
           <div class="signinCard">
 
@@ -345,7 +345,8 @@ export default {
         address: '',
         tel: '',
         checkRule: false
-      }
+      },
+      showSignin: false
     }
   },
   methods: {
@@ -380,6 +381,9 @@ export default {
     const vm = this
     vm.openPage()
     vm.$bus.$emit('getPathName')
+    setTimeout(() => {
+      vm.showSignin = true
+    }, 500)
   }
 }
 </script>

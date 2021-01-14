@@ -16,7 +16,7 @@
 
       <!-- 產品區banner -->
       <section>
-          <div class="products-banner">
+          <div class="products-banner preFadein" :class="{'fadeIn' : bannerShow}">
 
             <vue-typer
             :text='["不斷突破光學極限","只為了登峰造極"]'
@@ -43,7 +43,7 @@
 
         <div class="container">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-3 preFadein" :class="{'fadeIn' : productShow}">
           <div class="sticky-top">
             <div class="d-flex justify-content-center">
               <div class="card sideMenu w-100 bg-light border-0 mb-5">
@@ -67,7 +67,7 @@
           <div class="col-lg-9 my-5 pt-2 px-0">
             <div class="container">
               <div class="row">
-              <div class="col-6 col-md-4 col-xl-3 pt-4 px-0" v-for="item in updateProducts" :key="item.id">
+              <div class="col-6 col-md-4 col-xl-3 pt-4 px-0 preFadein" v-for="item in updateProducts" :key="item.id" :class="{'fadeIn' : productShow}">
                 <div class="products-item px-3 d-flex flex-column h-100">
                   <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
                   <img :src="item.imageUrl" alt="" height="130px">
@@ -183,7 +183,9 @@ export default {
       selected: '',
       isLoading: false,
       cartsData: JSON.parse(localStorage.getItem('cartsData')) || [],
-      isClick: false
+      isClick: false,
+      bannerShow: false,
+      productShow: false
     }
   },
   methods: {
@@ -192,10 +194,17 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products/all`
       const api2 = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products?page=${page}`
 
+      vm.productShow = false
       vm.$http.get(api).then((res) => {
         if (res.data.success) {
           vm.allProducts = res.data.products
           vm.productsIsLoading = true
+          setTimeout(() => {
+            vm.bannerShow = true
+          }, 500)
+          setTimeout(() => {
+            vm.productShow = true
+          }, 1000)
         } else {
           alert('商品載入錯誤')
           vm.$router.push('home')
