@@ -2,7 +2,6 @@
     <div>
       <!-- loading效果 -->
       <loading :active.sync="isLoading"></loading>
-      <!--  -->
 
       <!-- 折價券清單 -->
       <div class="container-fluid mt-5 pt-5">
@@ -50,11 +49,9 @@
       </div>
 
       </div>
-      <!--  -->
 
       <!-- 分頁 -->
       <pagination></pagination>
-      <!--  -->
 
       <!-- 折價券modal -->
       <div class="modal fade" id="couponModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,7 +91,6 @@
         </div>
       </div>
       </div>
-      <!--  -->
 
       <!-- 刪除折價券modal -->
       <div class="modal fade" id="delCouponModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -116,7 +112,6 @@
         </div>
       </div>
       </div>
-      <!--  -->
     </div>
 </template>
 

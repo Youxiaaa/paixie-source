@@ -2,7 +2,7 @@
     <div>
 
         <a href="#" @click.prevent="backTop" class="backTopIcon" :class="{'showScroolTop' : showScrollTop}">
-            <img src="@/assets/img/scrollTop.png" alt="backToTop-Icon" width="60px" height="60px">
+            <img src="@/img/scrollTop.png" alt="backToTop-Icon" width="60px" height="60px">
         </a>
 
     </div>

@@ -3,7 +3,6 @@
 
         <!-- loading效果 -->
         <loading :active.sync="isLoading"></loading>
-        <!--  -->
 
         <!-- 訂單 -->
         <section>
@@ -12,11 +11,11 @@
             <table class="table table-hover tableResponsiveFix">
               <thead>
                 <tr>
-                    <th>訂單編號</th>
-                    <th>產品名稱</th>
-                    <th>訂購日期</th>
-                    <th>付款狀態</th>
-                    <th>總金額</th>
+                  <th>訂單編號</th>
+                  <th>產品名稱</th>
+                  <th>訂購日期</th>
+                  <th>付款狀態</th>
+                  <th>總金額</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,11 +40,9 @@
           </div>
 
         </section>
-        <!--  -->
 
         <!-- 分頁 -->
         <pagination></pagination>
-        <!--  -->
     </div>
 </template>
 

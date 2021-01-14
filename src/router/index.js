@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '*', redirect: '/' },
   {
     path: '/',
     name: 'frontendDashboard',
@@ -66,7 +65,8 @@ const routes = [
         meta: { requiresAuth: true }
       }
     ]
-  }
+  },
+  { path: '*', redirect: '/' }
 ]
 
 const router = new VueRouter({

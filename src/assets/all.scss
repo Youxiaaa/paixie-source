@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/functions';
-@import './variables';
+@import './helpers/variables';
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 @import '~vuejs-noty/dist/vuejs-noty.css';
@@ -137,7 +137,7 @@ input[type="button"]:active{
 }
 
 .logoDark{
-  background-image: url(../src/assets/img/logo-dark.svg) !important;
+  background-image: url(../src/img/logo-dark.svg) !important;
 }
 
 .shake{
@@ -186,7 +186,7 @@ input[type="button"]:active{
 
 .logo a{
   display: block;
-  background-image: url(../src/assets/img/logo.svg);
+  background-image: url(../src/img/logo.svg);
   height: 50px;
   width: 100px;
   background-size: 100px;
@@ -437,7 +437,7 @@ input[type="button"]:active{
 
 //////////////////// banner ////////////////////
 .banner{
-  background-image: url('../src/assets/img/landing-banner.jpg');
+  background-image: url('../src/img/landing-banner.jpg');
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -528,21 +528,21 @@ input[type="button"]:active{
 }
 
 .home-product-item-img1{
-  background-image: url('../src/assets/img/home-product_1.jpeg');
+  background-image: url('../src/img/home-product_1.jpeg');
   background-size: cover;
   background-position: center center;
   position: relative;    
 }
 
 .home-product-item-img2{
-  background-image: url('../src/assets/img/home-product_2.jpeg');
+  background-image: url('../src/img/home-product_2.jpeg');
   background-size: cover;
   background-position: center center;
   position: relative; 
 }
 
 .home-product-item-img3{
-  background-image: url('../src/assets/img/home-product_3.jpeg');
+  background-image: url('../src/img/home-product_3.jpeg');
   background-size: cover;
   background-position: center center;
   position: relative; 
@@ -960,19 +960,14 @@ input[type="button"]:active{
 .products-banner{
   width: 100%;
   height: 50vh;
-  background-image: url('../src/assets/img/products_banner.jpeg');
+  background-image: url('../src/img/products_banner.jpeg');
   background-size: cover;
   background-position: bottom center;
   background-attachment: fixed;
+  margin-top: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.product-banner-border{
-  border: 5px solid $secondary;
-  margin-top: 80px;
-  padding: 20px;
 }
 
 .products-item{
@@ -1151,7 +1146,7 @@ input[type="button"]:active{
 }
 
 .cartBanner{
-  background-image: url('../src/assets/img/cartBanner.jpeg');
+  background-image: url('../src/img/cartBanner.jpeg');
   background-position: center center;
   background-size: cover;
   height: 500px;
@@ -1188,6 +1183,10 @@ input[type="button"]:active{
   display: none;
 }
 
+.checkOutTitle{
+  font-size: 50px;
+}
+
 ////////////////////////////////////////////////////////////
 
 //////////////////// cart responsive ////////////////////
@@ -1205,6 +1204,12 @@ input[type="button"]:active{
 @media(min-width : 415px){
   .phoneSizeTable{
     display: none;
+  }
+}
+
+@media(max-width : 415px){
+  .checkOutTitle{
+    font-size: 32px;
   }
 }
 ////////////////////////////////////////////////////////////
@@ -1279,7 +1284,7 @@ input[type="button"]:active{
 }
 
 .backEndlogo{
-  background: url(../src/assets/img/backEnd-logo.svg);
+  background: url(../src/img/backEnd-logo.svg);
   display: block;
   width: 200px;
   height: 56px;

@@ -7,7 +7,7 @@
           <div class="col-md-4 text-center">
           <h2>
             <a href="#">
-              <img src="@/assets/img/footer-logo.svg" alt="footer logo" title="拍謝">
+              <img src="@/img/footer-logo.svg" alt="footer logo" title="拍謝">
             </a>
           </h2>
             <p class="text-white my-2 h6"><i class="fas fa-phone-alt"></i> (02)1234-5678</p>

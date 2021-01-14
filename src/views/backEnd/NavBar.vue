@@ -3,7 +3,6 @@
 
         <!-- loading效果 -->
         <loading :active.sync="isLoading"></loading>
-        <!--  -->
 
         <div class="hamburgerMenu" :class="{'hamburgerMenuShow' : hamburgerChange}">
 

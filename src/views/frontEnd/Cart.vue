@@ -41,48 +41,48 @@
 
             <table class="table computerSizeTable" v-if="cartsData.length > 0">
 
-                <thead>
-                  <tr class="bg-secondary text-white">
-                    <th width="5%"></th>
-                    <th class="cartImg" width="10%"></th>
-                    <th>品名</th>
-                    <th class="text-center" width="15%"> 數量 </th>
-                    <th width="10%">金額</th>
-                  </tr>
-                </thead>
+              <thead>
+                <tr class="bg-secondary text-white">
+                  <th width="5%"></th>
+                  <th class="cartImg" width="10%"></th>
+                  <th>品名</th>
+                  <th class="text-center" width="15%"> 數量 </th>
+                  <th width="10%">金額</th>
+                </tr>
+              </thead>
 
-                <tbody>
-                  <tr v-for="item in cartsData" :key="item.id">
-                    <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
-                    <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
-                    <td>
-                      <span class="text-secondary"> {{ item.title }} </span>
-                    </td>
-                    <td class="text-center">
-                    <div class="btn-group">
-                      <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
-                      <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
-                      <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
+              <tbody>
+                <tr v-for="item in cartsData" :key="item.id">
+                  <td class="d-flex justify-content-center pt-3 pl-3"> <a href="#" @click.prevent="delCart(item)"><i class="fas fa-trash"></i></a> </td>
+                  <td class="cartImg text-center"> <img :src="item.imageUrl" alt="" width="40px" height="40px"> </td>
+                  <td>
+                    <span class="text-secondary"> {{ item.title }} </span>
+                  </td>
+                  <td class="text-center">
+                  <div class="btn-group">
+                    <button class="btn btn-primary text-white" :class="{'pageDisabled': item.qty <= 1}" @click.prevent='onMinus(item)'> - </button>
+                    <input type="number" :value="item.qty" min="1" max="10" disabled class="text-center">
+                    <button class="btn btn-primary text-white" :class="{'pageDisabled': totalPrice > 1000000}" @click.prevent="onPlus(item)"> + </button>
+                  </div>
+                  <br>
+                  </td>
+                  <td class="text-primary text-right"> {{ item.price * item.qty | dollarSign}} </td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <div class="couponItem" v-if="cartsData.length > 0">
+                    <div class="d-flex mb-2">
+                      <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
+                      <span class="d-flex align-self-center h3 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
                     </div>
-                    <br>
-                    </td>
-                    <td class="text-primary text-right"> {{ item.price * item.qty | dollarSign}} </td>
-                  </tr>
-                </tbody>
-
-                <tfoot>
-                  <tr>
-                    <td colspan="5">
-                      <div class="couponItem" v-if="cartsData.length > 0">
-                      <div class="d-flex mb-2">
-                        <h3 class="d-flex align-self-center ml-auto h6 mr-5 text-secondary">總金額</h3>
-                        <span class="d-flex align-self-center h3 text-primary"> {{ totalPrice | dollarSign }} 元整</span>
-                      </div>
-                      <button type="button" class="btn btn-lg btn-primary text-white d-flex ml-auto" @click.prevent="toCheckout">結帳去</button>
-                      </div>
-                    </td>
-                  </tr>
-                </tfoot>
+                    <button type="button" class="btn btn-lg btn-primary text-white d-flex ml-auto" @click.prevent="toCheckout">結帳去</button>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
 
             </table>
 
@@ -135,25 +135,27 @@
               </div>
               <h2 class="d-flex justify-content-center my-5 h2 text-primary" v-if="cartsData.length !== 0">推 薦 商 品</h2>
 
-              <div class="row" v-if="cartsData.length !== 0">
+              <div class="pb-5" v-if="cartsData.length !== 0">
+              <div class="row">
                 <div class="col-6 col-md-4 col-xl-3 pt-4 px-0" v-for="item in products" :key="item.id">
                   <div class="products-item px-3 d-flex flex-column h-100">
-                      <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
+                    <div class="d-flex justify-content-center" @click.prevent="openProductModal(item)">
                       <img :src="item.imageUrl" alt="" height="130px">
-                      </div>
-                      <div @click="openProductModal(item)" class="my-2 mt-auto">
-                        <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
-                        <span class="ellipsis"> {{ item.description }} </span>
-                      </div>
-                      <div class="my-3 d-flex mt-auto" @click="openProductModal(item)">
-                        <del class="h5 mr-auto align-self-center computer-item-price"> {{ item.origin_price | dollarSign }} </del>
-                        <small class="text-danger h5 align-self-center computer-item-price"> {{ item.price | dollarSign }} </small>
-                      </div>
-                        <del class="h5 ml-auto phone-item-price" @click="openProductModal(item)"> NTD{{ item.origin_price | dollarSign }} </del>
-                        <small class="text-danger ml-auto h5 phone-item-price" @click="openProductModal(item)"> NTD{{ item.price | dollarSign }} </small>
-                        <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
+                    </div>
+                    <div @click="openProductModal(item)" class="my-2 mt-auto">
+                      <h2 class="h5 text-primary mt-2 titleEllipsis"> {{ item.title }} </h2>
+                      <span class="ellipsis"> {{ item.description }} </span>
+                    </div>
+                    <div class="my-3 d-flex mt-auto" @click="openProductModal(item)">
+                      <del class="h5 mr-auto align-self-center computer-item-price"> {{ item.origin_price | dollarSign }} </del>
+                      <small class="text-danger h5 align-self-center computer-item-price"> {{ item.price | dollarSign }} </small>
+                    </div>
+                      <del class="h5 ml-auto phone-item-price" @click="openProductModal(item)"> NTD{{ item.origin_price | dollarSign }} </del>
+                      <small class="text-danger ml-auto h5 phone-item-price" @click="openProductModal(item)"> NTD{{ item.price | dollarSign }} </small>
+                      <button class="btn btn-primary text-white py-2 mb-3" @click.prevent="addToCart(item)">加入購物車</button>
                   </div>
                 </div>
+              </div>
               </div>
 
           </div>
@@ -170,7 +172,7 @@
               </button>
               <div class="row">
                 <div class="col-xl-5 d-flex flex-column">
-                  <img :src="tempProduct.imageUrl" class="d-flex mx-auto mt-auto model-img" height="350px" alt="...">
+                  <img :src="tempProduct.imageUrl" class="d-flex mx-auto mt-auto model-img" height="270px" alt="商品圖片">
                   <h2 class="h3 text-primary mt-auto px-3"> {{ tempProduct.title }} </h2>
                   <p class="h6 text-secondary my-3 px-3"> {{ tempProduct.description }} </p>
                   <div class="d-flex justify-content-end">
@@ -185,11 +187,11 @@
                     加入購物車</button>
                   </div>
                 </div>
-                  <div class="col-xl-7 mt-3 px-2 product-content">
-                    <p class="text-white d-inline px-3 h3 bg-primary">產 品 介 紹</p>
-                    <p class="h6 text-secondary mt-1 lh-global my-4"> {{ tempProduct.content }} </p>
-                    <h3 class="text-white d-inline px-3 h3 bg-primary">購 買 前 須 知</h3>
-                    <ul class="mt-4 text-secondary pl-0">
+                  <div class="col-xl-7 mt-3 pl-5 pr-3 product-content">
+                    <p class="text-white d-inline h2 text-primary">產 品 介 紹</p>
+                    <p class="h6 text-secondary mt-1 lh-global my-4 pr-5"> {{ tempProduct.content }} </p>
+                    <h3 class="text-white d-inline h2 text-primary">購 買 前 須 知</h3>
+                    <ul class="mt-4 text-secondary pl-0 pr-5">
                       <li class="mb-4 list-unstyled">本賣場販售「現貨」&「追加」商品，追加款需追加7-21個工作天，工作天不包含假日，不能等待請勿下單。</li>
                       <li class="mb-4 list-unstyled">下單就會進行追加，下單後不接受隨意取消訂單!!!（超過追加期除外）</li>
                       <li class="mb-4 list-unstyled">若商品有瑕疵或寄錯問題請於24小時內私訊客服，有分尺寸商品若不合可以辦理換貨（來回運費需自付）</li>
@@ -198,20 +200,20 @@
                       <li class="mb-4 list-unstyled">隨意棄單或無故未取包裹一律加入黑名單，若有任何問題都可以私訊客服。</li>
                       <li class="mb-4 list-unstyled">特價商品皆屬特賣，售出不做退換貨請見諒。</li>
                     </ul>
-                    <h3 class="text-white d-inline px-3 h3 bg-primary">購 物 流 程</h3>
-                    <h4 class="text-secondary h6 mt-4">選購商品加入購物車→結帳付款(期限內繳款完畢)→等待追加7-21工作天→出貨通知(2-3日取貨)</h4>
-                    <ul class="mt-4 text-secondary pl-0">
+                    <h3 class="text-white d-inline h2 text-primary">購 物 流 程</h3>
+                    <ul class="mt-4 text-secondary pl-0 pr-5">
+                      <li class="mb-4 list-unstyled">選購商品加入購物車→結帳付款(期限內繳款完畢)→等待追加7-21工作天→出貨通知(2-3日取貨)</li>
                       <li class="mb-4 list-unstyled">匯款完畢請務必至訂單內容留言匯款資訊(日期/金額/後五碼)</li>
                       <li class="mb-4 list-unstyled">下單記得登入會員，才會收到出貨的mail通知唷~</li>
                     </ul>
-                    <h3 class="text-white d-inline px-3 h3 bg-primary">付 款 方 式</h3>
-                    <ul class="mt-4 text-secondary pl-0">
+                    <h3 class="text-white d-inline h2 text-primary">付 款 方 式</h3>
+                    <ul class="mt-4 text-secondary pl-0 pr-5">
                       <li class="mb-4 list-unstyled">線上刷卡</li>
                       <li class="mb-4 list-unstyled">貨到付款</li>
                       <li class="mb-4 list-unstyled">ATM轉帳</li>
                     </ul>
-                    <h3 class="text-white d-inline px-3 h3 bg-primary">注 意 事 項</h3>
-                    <ul class="mt-4 text-secondary pl-0">
+                    <h3 class="text-white d-inline h2 text-primary">注 意 事 項</h3>
+                    <ul class="mt-4 text-secondary pl-0 pr-5">
                       <li class="mb-4 list-unstyled">請勿濫用七天鑑賞期，下單前請務必三思並詳閱退換貨政策，勿衝動購買。</li>
                       <li class="mb-4 list-unstyled">若尺寸不合提供一次更換尺寸的服務（自行負擔來回運費）</li>
                     </ul>
@@ -222,7 +224,6 @@
           </div>
       </div>
       </div>
-      <!--  -->
 
     </div>
 </template>
@@ -242,7 +243,8 @@ export default {
       isLoading: false,
       productsIsLoading: false,
       addToCartLoading: false,
-      cartsData: JSON.parse(localStorage.getItem('cartsData')) || []
+      cartsData: JSON.parse(localStorage.getItem('cartsData')) || [],
+      isClick: false
     }
   },
   methods: {
@@ -282,6 +284,13 @@ export default {
       vm.cartsData.forEach((item) => {
         cacheId.push(item.product_id)
       })
+
+      if (vm.isClick === true) { return }
+
+      vm.isClick = true
+      setTimeout(() => {
+        vm.isClick = false
+      }, 1000)
 
       if (cacheId.indexOf(product.id) === -1) {
         const cartContent = {

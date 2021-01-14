@@ -14,9 +14,9 @@
 
             <div>
               <ul class="mb-5 pl-0">
-                  <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin')">登入</a></li>
-                  <li class="list-unstyled"><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about')">品牌故事</a></li>
-                  <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products')">商品</a></li>
+                <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('signin')">登入</a></li>
+                <li class="list-unstyled"><a href="#" class="h4 my-5" :class="{'hamburgerTextShow' : hamburgerChange}" @click.prevent="toWhere('about')">品牌故事</a></li>
+                <li class="list-unstyled"><a href="#" class="h4" :class="{'hamburgerTextShow' : hamburgerChange}"  @click.prevent="toWhere('products')">商品</a></li>
               </ul>
             </div>
 
@@ -42,13 +42,13 @@
 
             <h1 class="logo d-flex justify-content-center mt-1" v-if="isHomepage">
               <a href="#" title="拍謝" @click.prevent="toWhere('')" :class="{'logoDark' : isPageover10px}">
-                  拍謝
+                拍謝
               </a>
             </h1>
 
             <h1 class="logo d-flex justify-content-center mt-1" v-if="!isHomepage">
               <a href="#" title="拍謝" @click.prevent="toWhere('')" class="logoDark">
-                  拍謝
+                拍謝
               </a>
             </h1>
 
