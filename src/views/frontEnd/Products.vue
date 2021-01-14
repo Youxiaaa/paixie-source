@@ -196,48 +196,37 @@ export default {
 
       vm.productShow = false
       vm.$http.get(api).then((res) => {
-        if (res.data.success) {
-          vm.allProducts = res.data.products
-          vm.productsIsLoading = true
-          setTimeout(() => {
-            vm.bannerShow = true
-          }, 500)
-          setTimeout(() => {
-            vm.productShow = true
-          }, 1000)
-        } else {
-          alert('商品載入錯誤')
-          vm.$router.push('home')
-        }
+        vm.allProducts = res.data.products
+        vm.productsIsLoading = true
+        setTimeout(() => {
+          vm.bannerShow = true
+        }, 500)
+        setTimeout(() => {
+          vm.productShow = true
+        }, 1000)
       })
 
       vm.$http.get(api2).then((res) => {
-        if (res.data.success) {
-          vm.products = res.data.products
-          vm.pages = res.data.pagination
-          vm.$bus.$emit('updatePagination', res.data.pagination)
-        } else {
-          alert('商品載入錯誤')
-        }
+        vm.products = res.data.products
+        vm.pages = res.data.pagination
+        vm.$bus.$emit('updatePagination', res.data.pagination)
       })
     },
     toPage (page) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMERPATH}/products?page=${page}`
-
+      vm.productShow = false
       vm.isLoading = true
       vm.$http.get(api).then((res) => {
         vm.isLoading = false
-
-        if (res.data.success) {
-          vm.products = res.data.products
-          vm.pages = res.data.pagination
-          document.body.scrollTop = 500
-          document.documentElement.scrollTop = 500
-          vm.$bus.$emit('updatePagination', res.data.pagination)
-        } else {
-          alert('商品載入失敗')
-        }
+        vm.products = res.data.products
+        vm.pages = res.data.pagination
+        document.body.scrollTop = 400
+        document.documentElement.scrollTop = 400
+        vm.$bus.$emit('updatePagination', res.data.pagination)
+        setTimeout(() => {
+          vm.productShow = true
+        }, 200)
       })
     },
     openProductModal (item) {
