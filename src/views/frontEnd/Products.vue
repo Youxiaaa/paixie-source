@@ -220,6 +220,10 @@ export default {
       vm.productShow = false
       vm.isLoading = true
       vm.$http.get(api).then((res) => {
+        setTimeout(() => {
+          vm.productShow = true
+          vm.bannerShow = true
+        }, 200)
         vm.isLoading = false
         vm.products = res.data.products
         vm.pages = res.data.pagination
