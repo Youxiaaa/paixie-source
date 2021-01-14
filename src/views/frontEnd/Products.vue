@@ -322,6 +322,8 @@ export default {
     vm.getProducts()
     vm.$bus.$on('getProducts', (selected) => {
       vm.selected = selected
+      document.body.scrollTop = 400
+      document.documentElement.scrollTop = 400
     })
     vm.$bus.$on('toPage', (page) => {
       vm.toPage(page)
