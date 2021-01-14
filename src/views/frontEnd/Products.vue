@@ -123,11 +123,11 @@
                   加入購物車</button>
               </div>
             </div>
-            <div class="col-xl-7 mt-3 pl-5 pr-3 product-content">
+            <div class="col-xl-7 mt-3 px-5 product-content">
               <p class="text-white d-inline h2 text-primary">產品介紹</p>
-              <p class="h6 text-secondary mt-1 lh-global my-4 pr-5"> {{ tempProduct.content }} </p>
+              <p class="h6 text-secondary mt-1 lh-global my-4"> {{ tempProduct.content }} </p>
               <h3 class="text-white d-inline h2 text-primary"> 購 買 前 須 知  </h3>
-              <ul class="mt-4 text-secondary pl-0 pr-5">
+              <ul class="mt-4 text-secondary pl-0">
                 <li class="mb-4 list-unstyled">本賣場販售「現貨」&「追加」商品，追加款需追加7-21個工作天，工作天不包含假日，不能等待請勿下單。</li>
                 <li class="mb-4 list-unstyled">下單就會進行追加，下單後不接受隨意取消訂單!!!（超過追加期除外）</li>
                 <li class="mb-4 list-unstyled">若商品有瑕疵或寄錯問題請於24小時內私訊客服，有分尺寸商品若不合可以辦理換貨（來回運費需自付）</li>
@@ -137,19 +137,19 @@
                 <li class="mb-4 list-unstyled">特價商品皆屬特賣，售出不做退換貨請見諒。</li>
               </ul>
               <h3 class="text-white d-inline h2 text-primary">購 物 流 程</h3>
-              <ul class="mt-4 text-secondary pl-0 pr-5">
+              <ul class="mt-4 text-secondary pl-0">
                 <li class="mb-4 list-unstyled">選購商品加入購物車→結帳付款(期限內繳款完畢)→等待追加7-21工作天→出貨通知(2-3日取貨)</li>
                 <li class="mb-4 list-unstyled">匯款完畢請務必至訂單內容留言匯款資訊(日期/金額/後五碼)</li>
                 <li class="mb-4 list-unstyled">下單記得登入會員，才會收到出貨的mail通知唷~</li>
               </ul>
               <h3 class="text-white d-inline h2 text-primary">付 款 方 式</h3>
-              <ul class="mt-4 text-secondary pl-0 pr-5">
+              <ul class="mt-4 text-secondary pl-0">
                 <li class="mb-4 list-unstyled">線上刷卡</li>
                 <li class="mb-4 list-unstyled">貨到付款</li>
                 <li class="mb-4 list-unstyled">ATM轉帳</li>
               </ul>
               <h3 class="text-white d-inline h2 text-primary">注 意 事 項</h3>
-              <ul class="mt-4 text-secondary pl-0 pr-5">
+              <ul class="mt-4 text-secondary pl-0">
                 <li class="mb-4 list-unstyled">請勿濫用七天鑑賞期，下單前請務必三思並詳閱退換貨政策，勿衝動購買。</li>
                 <li class="mb-4 list-unstyled">若尺寸不合提供一次更換尺寸的服務（自行負擔來回運費）</li>
               </ul>
