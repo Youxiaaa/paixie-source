@@ -1,0 +1,25 @@
+<svg width="412" height="208.00000000000003" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="414" height="210" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_4" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#ffffff" stroke-width="1.5" x="4.104153" y="45.837498" width="173.999998" height="136.000003" id="svg_1"/>
+  <rect fill="#ffffff" stroke-width="1.5" stroke-opacity="null" x="33.500001" y="29.837501" width="44.999999" height="21" id="svg_2" stroke="null"/>
+  <rect fill="#ffffff" stroke-width="1.5" stroke-opacity="null" x="44.077269" y="20.231817" width="24" height="17.000001" id="svg_3" stroke="null"/>
+  <rect fill="#ffffff" stroke="null" stroke-width="1.5" stroke-opacity="null" x="132.5" y="19.441651" width="11" height="36" id="svg_5" transform="rotate(-0.46993210911750793 138.00000000000165,37.44165039062473) "/>
+  <rect fill="#ffffff" stroke-width="1.5" stroke-opacity="null" x="132.499995" y="11.441652" width="43.000004" height="11" id="svg_6" stroke="null"/>
+  <ellipse fill="#999999" stroke-width="7.5" cx="109.999992" cy="132.837502" id="svg_12" rx="70.500002" ry="66.000014" stroke="#ffffff"/>
+  <ellipse stroke="#ffffff" fill="#999999" stroke-width="4" cx="110.605686" cy="132.730283" id="svg_13" rx="62.499999" ry="58.288634"/>
+  <rect fill="#999999" stroke-width="4" x="169.5" y="2.837507" width="22" height="191.999987" id="svg_14" stroke="null"/>
+  <rect fill="#999999" stroke-width="1.5" stroke-opacity="null" x="183.5" y="146.837499" width="225.000014" height="48.000002" id="svg_15" stroke="null"/>
+  <text fill="#ffffff" stroke-width="0" stroke-opacity="null" x="287.296076" y="92.571769" id="svg_16" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(4.151276384378313,0,0,3.9942519389729227,-995.5654677516121,-257.0799756936336) " stroke="null" font-weight="bold">拍謝</text>
+  <text fill="#ffffff" stroke-width="0" x="269.07128" y="243.797615" id="svg_17" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(1.1834477185927983,0,0,1.185149431228637,-115.71053802492702,-106.96045334264633) " stroke="#000000" font-weight="normal">PAI XIE GEAR</text>
+ </g>
+</svg>
