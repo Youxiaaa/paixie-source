@@ -31,8 +31,8 @@
           </thead>
           <tbody>
             <tr v-for="item in order.products" :key="item.id">
-              <td>
-                <img :src="item.product.imageUrl" alt="商品圖片" width="50px" height="45px" class="d-flex mt-3">
+              <td class="text-center">
+                <img :src="item.product.imageUrl" alt="商品圖片" width="50px" height="45px" class="mt-3">
               </td>
               <td>
                 <span> {{ item.product.title }} </span>
