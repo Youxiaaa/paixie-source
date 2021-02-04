@@ -119,7 +119,7 @@
               <select v-model="tempProduct.num" class="w-50">
                   <option :value="item" v-for="item in 5" :key="item.id">選購 {{ item }} {{ tempProduct.unit }} </option>
               </select>
-              <button type="button" class="btn btn-primary text-white w-50 ml-3" @click.prevent="addToCart(tempProduct , tempProduct.num)">
+              <button type="button" class="btn btn-primary text-white w-50 ml-3" @click.prevent="addToCart(tempProduct, tempProduct.num)">
                   加入購物車</button>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default {
       const vm = this
 
       vm.tempProduct = { ...item }
-      vm.tempProduct.num = 1
+      vm.tempproductNum = 1
 
       $('#productModal').modal('show')
 
@@ -288,7 +288,7 @@ export default {
             let { qty } = item
             const cartContent = {
               product_id: product.id,
-              qty: qty += 1,
+              qty: qty += vm.tempProduct.num,
               title: product.title,
               imageUrl: product.imageUrl,
               unit: product.unit,
